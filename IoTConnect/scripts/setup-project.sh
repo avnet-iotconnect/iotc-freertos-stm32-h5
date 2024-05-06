@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Check on submodule."
-git -C ../../ submodule init
-git -C ../../ submodule update
+git submodule init
+git submodule update
 
 echo "Unzipping en.x-cube-aws-h5-v1-0-0.zip"
 unzip -q ../en.x-cube-aws-h5-v1-0-0.zip
