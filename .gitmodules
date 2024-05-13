@@ -1,4 +1,4 @@
 [submodule "IoTConnect/iotc-freertos-sdk"]
 	path = IoTConnect/iotc-freertos-sdk
-	url = git@github.com:pywtk/iotc-freertos-sdk.git
+	url = git@github.com:avnet-iotconnect/iotc-freertos-sdk.git
 
