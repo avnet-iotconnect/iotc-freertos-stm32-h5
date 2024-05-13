@@ -1,6 +1,112 @@
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h iotc-freertos-stm32-h5-nogit/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h	2023-08-11 10:33:38.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h	2024-05-03 13:36:25.680622942 +0100
+diff --git a/Drivers/BSP/STM32H573I-DK/stm32h573i_discovery_conf.h b/Drivers/BSP/STM32H573I-DK/stm32h573i_discovery_conf.h
+new file mode 100644
+index 0000000..8c0b97c
+--- /dev/null
++++ b/Drivers/BSP/STM32H573I-DK/stm32h573i_discovery_conf.h
+@@ -0,0 +1,99 @@
++/**
++  ******************************************************************************
++  * @file    stm32h573i_discovery_conf_template.h
++  * @author  MCD Application Team
++  * @brief   configuration file.
++  *          This file should be copied to the application folder and renamed
++  *          to stm32h573i_discovery_conf.h
++  ******************************************************************************
++  * @attention
++  *
++  * Copyright (c) 2023 STMicroelectronics.
++  * All rights reserved.
++  *
++  * This software is licensed under terms that can be found in the LICENSE file
++  * in the root directory of this software component.
++  * If no LICENSE file comes with this software, it is provided AS-IS.
++  *
++  ******************************************************************************
++  */
++
++/* Define to prevent recursive inclusion -------------------------------------*/
++#ifndef STM32H573I_DK_CONF_H
++#define STM32H573I_DK_CONF_H
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++/* Includes ------------------------------------------------------------------*/
++#include "stm32h5xx_hal.h"
++
++/** @addtogroup BSP
++  * @{
++  */
++
++/** @addtogroup STM32H573I_DK
++  * @{
++  */
++
++/** @defgroup STM32H573I_DK_CONFIG Config
++  * @{
++  */
++
++/** @defgroup STM32H573I_DK_CONFIG_Exported_Constants Exported Constants
++  * @{
++  */
++
++/* COM define */
++#define USE_BSP_COM_FEATURE               1U
++#define USE_COM_LOG                       0U
++
++/* I2C BUS timing define */
++#define I2C_VALID_TIMING_NBR              128U
++
++/* Audio codecs defines */
++#define USE_AUDIO_CODEC_CS42L51           1U
++
++/* TS defines */
++#define USE_TS_GESTURE                    1U
++#define USE_TS_MULTI_TOUCH                1U
++#define TS_TOUCH_NBR                      2U
++
++/* IRQn priorities */
++#define BSP_BUTTON_USER_IT_PRIORITY       15U
++#define BSP_AUDIO_OUT_IT_PRIORITY         14U
++#define BSP_AUDIO_IN_IT_PRIORITY          15U
++#define BSP_SD_IT_PRIORITY                14U
++#define BSP_SD_RX_IT_PRIORITY             14U
++#define BSP_SD_TX_IT_PRIORITY             15U
++#define BSP_TS_IT_PRIORITY                15U
++
++
++/* I2C4 Frequencies in Hz  */
++#define BUS_I2C4_FREQUENCY                100000UL /* Frequency of I2C4 = 100 KHz*/
++
++/* Usage of USBPD PWR TRACE system */
++#define USE_BSP_USBPD_PWR_TRACE           0U /* USBPD BSP trace system is disabled */
++
++/**
++  * @}
++  */
++
++/**
++  * @}
++  */
++
++/**
++  * @}
++  */
++
++/**
++  * @}
++  */
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* STM32H573I_DK_CONF_H */
+diff --git a/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h b/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h
+index 0558ee0..c441b56 100644
+--- a/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h
++++ b/Middleware/ARM/mbedtls/include/mbedtls/mbedtls_config.h
 @@ -2112,7 +2112,7 @@
   *
   * Module:  library/chacha20.c
@@ -10,55 +116,117 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CHACHAPOLY_C
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/app/emu_sensor_publish.c iotc-freertos-stm32-h5-nogit/Projects/Common/app/emu_sensor_publish.c
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/app/emu_sensor_publish.c	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/Common/app/emu_sensor_publish.c	2024-05-03 13:36:36.536614610 +0100
-@@ -58,6 +58,9 @@
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_builtin_composites.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_builtin_composites.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_builtin_composites.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_builtin_composites.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_builtin_primitives.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_builtin_primitives.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_builtin_primitives.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_builtin_primitives.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_compat.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_compat.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_compat.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_compat.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_config.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_config.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_config.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_config.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_driver_common.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_common.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_driver_common.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_common.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_driver_contexts_composites.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_contexts_composites.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_driver_contexts_composites.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_contexts_composites.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_driver_contexts_primitives.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_contexts_primitives.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_driver_contexts_primitives.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_driver_contexts_primitives.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_extra.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_extra.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_extra.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_extra.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_platform.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_platform.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_platform.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_platform.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_se_driver.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_se_driver.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_se_driver.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_se_driver.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_sizes.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_sizes.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_sizes.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_sizes.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_struct.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_struct.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_struct.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_struct.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_types.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_types.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_types.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_types.h
+diff --git a/Middleware/ARM/mbedtls/include/psa/crypto_values.h b/Middleware/ARM/mbedtls/include/psa.rm/crypto_values.h
+similarity index 100%
+rename from Middleware/ARM/mbedtls/include/psa/crypto_values.h
+rename to Middleware/ARM/mbedtls/include/psa.rm/crypto_values.h
+diff --git a/Projects/Common/app/emu_sensor_publish.c b/Projects/Common/app/emu_sensor_publish.c
+index 8640751..0d17cb1 100644
+--- a/Projects/Common/app/emu_sensor_publish.c
++++ b/Projects/Common/app/emu_sensor_publish.c
+@@ -58,6 +58,10 @@
  /* Telemetry inputs */
  #include "lwip/stats.h"
  
 +#include "iotconnect_config.h"
-+#include "iotconnect_telemetry.h"
++#include "iotconnect_app.h"
++#include "iotcl_telemetry.h"
 +
  #define MQTT_PUBLISH_MAX_LEN                 ( 512 )
  #define MQTT_PUBLISH_TIME_BETWEEN_MS         ( 2000 )
  #define MQTT_PUBLISH_TOPIC                   "net_stats"
-@@ -205,8 +208,34 @@
+@@ -205,8 +209,34 @@ static BaseType_t xUpdateData( NetworkData_t * pxData )
  }
  
  /*-----------------------------------------------------------*/
 +#define APP_VERSION 			"00.00.01"		// Version string
-+char *iotcApp_create_telemetry_json(IotclMessageHandle msg, const void * pToTelemetryStruct, size_t siz) {
++__weak void iotcApp_create_and_send_telemetry_json(
++		const void *pToTelemetryStruct, size_t siz) {
 +
-+	const NetworkData_t * p;
++    const NetworkData_t * p = NULL;
++    IotclMessageHandle msg = iotcl_telemetry_create();
 +
-+	if(siz != sizeof(const const NetworkData_t))
-+		return '\0';
++    if(siz != sizeof(const NetworkData_t)) {
++        IOTCL_ERROR(siz, "Expected telemetry size does not match");
++        return;
++    }
 +
-+	p = pToTelemetryStruct;
-+	// Optional. The first time you create a data point, the current timestamp will be automatically added
++    p=pToTelemetryStruct;
++
++    // Optional. The first time you create a data poiF\Z\nt, the current timestamp will be automatically added
 +    // TelemetryAddWith* calls are only required if sending multiple data points in one packet.
-+    iotcl_telemetry_add_with_iso_time(msg, NULL);
++	// FIXME: new iotc-c-lib has new API for adding timestamps
++	// iotcl_telemetry_add_with_iso_time(msg, NULL);
 +
 +    iotcl_telemetry_set_number(msg, "timer", (double)p->timer);
 +    iotcl_telemetry_set_number(msg, "sent", (double)p->sent);
 +    iotcl_telemetry_set_number(msg, "received", (double)p->received);
-+
+ 
 +    iotcl_telemetry_set_string(msg, "version", APP_VERSION);
  
-+    const char* str = iotcl_create_serialized_string(msg, false);
- 
-+	if (str == NULL) {
-+		LogInfo( "serialized_string is NULL");
-+	}
-+
-+	iotcl_telemetry_destroy(msg);
-+    return (char* )str;
++    iotcl_mqtt_send_telemetry(msg, true);
++    iotcl_telemetry_destroy(msg);
 +}
  
  void vSensorPublishTask( void * pvParameters )
  {
-@@ -260,21 +289,26 @@
+@@ -260,21 +290,26 @@ void vSensorPublishTask( void * pvParameters )
                                       "{ \"timer_s\": %ld, \"sent_p\": %ld, \"received_p\": %ld }",
                                       xData.timer, xData.sent, xData.received );
  
@@ -100,18 +268,10 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
              if( xResult == pdTRUE )
              {
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/app/mqtt/mqtt_agent_task.c iotc-freertos-stm32-h5-nogit/Projects/Common/app/mqtt/mqtt_agent_task.c
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/app/mqtt/mqtt_agent_task.c	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/Common/app/mqtt/mqtt_agent_task.c	2024-05-03 13:36:36.548614602 +0100
-@@ -27,7 +27,7 @@
-  */
- 
- #include "logging_levels.h"
--#define LOG_LEVEL    LOG_INFO
-+#define LOG_LEVEL    LOG_DEBUG
- #include "logging.h"
- 
- /* Standard includes. */
+diff --git a/Projects/Common/app/mqtt/mqtt_agent_task.c b/Projects/Common/app/mqtt/mqtt_agent_task.c
+index 97eebea..24dddad 100644
+--- a/Projects/Common/app/mqtt/mqtt_agent_task.c
++++ b/Projects/Common/app/mqtt/mqtt_agent_task.c
 @@ -41,7 +41,6 @@
  #include "task.h"
  #include "event_groups.h"
@@ -131,7 +291,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  /*-----------------------------------------------------------*/
  
  /**
-@@ -163,6 +166,21 @@
+@@ -163,6 +166,19 @@ static const char * pcAlpnProtocols[] = { AWS_IOT_MQTT_ALPN, NULL };
  
  static MQTTAgentHandle_t xDefaultInstanceHandle = NULL;
  
@@ -142,8 +302,6 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +	const char *host;
 +	int port;
 +	char *duid;
-+	const char *sub_topic;
-+	const char *pub_topic;
 +	PkiObject_t root_ca_cert;
 +	PkiObject_t client_certificate;
 +	PkiObject_t private_key;
@@ -153,7 +311,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  /*-----------------------------------------------------------*/
  
  /**
-@@ -555,8 +573,6 @@
+@@ -555,8 +571,6 @@ static void prvResubscribeCommandCallback( MQTTAgentCommandContext_t * pxCommand
      for( uint32_t ulSubIdx = 0; ulSubIdx < pxCtx->uxSubscriptionCount; ulSubIdx++ )
      {
          /* Update cached SubAck status */
@@ -162,7 +320,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
          pxCtx->pxSubAckStatus[ ulSubIdx ] = pxReturnInfo->pSubackCodes[ ulSubIdx ];
  
          if( pxReturnInfo->pSubackCodes[ ulSubIdx ] == MQTTSubAckFailure )
-@@ -579,11 +595,6 @@
+@@ -579,11 +593,6 @@ static void prvResubscribeCommandCallback( MQTTAgentCommandContext_t * pxCommand
                  }
              }
          }
@@ -174,7 +332,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      }
  
      ( void ) xUnlockSubCtx( pxCtx );
-@@ -681,6 +692,8 @@
+@@ -681,6 +690,8 @@ static void prvIncomingPublishCallback( MQTTAgentContext_t * pMqttAgentContext,
  
      ( void ) packetId;
  
@@ -183,7 +341,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      configASSERT( pMqttAgentContext );
      configASSERT( pMqttAgentContext->pIncomingCallbackContext );
      configASSERT( pxPublishInfo );
-@@ -876,17 +889,22 @@
+@@ -876,17 +887,22 @@ static MQTTStatus_t prvConfigureAgentTaskCtx( MQTTAgentTaskCtx_t * pxCtx,
          pxCtx->xConnectInfo.pPassword = NULL;
          pxCtx->xConnectInfo.passwordLength = 0U;
  
@@ -213,7 +371,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
              xStatus = MQTTNoMemory;
          }
      }
-@@ -917,25 +935,24 @@
+@@ -917,25 +933,24 @@ static MQTTStatus_t prvConfigureAgentTaskCtx( MQTTAgentTaskCtx_t * pxCtx,
  
      if( xStatus == MQTTSuccess )
      {
@@ -245,50 +403,36 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
              xStatus = MQTTNoMemory;
          }
      }
-@@ -960,11 +977,41 @@
+@@ -960,11 +975,26 @@ MQTTAgentHandle_t xGetMqttAgentHandle( void )
      return xDefaultInstanceHandle;
  }
  
 +
-+/* @brief	Set configuration parameters of MQTT client
-+ *
-+ */
-+
-+MQTTStatus_t vSetMQTTConfig( const char *host,
-+						  int port,
-+						  const char *duid,
-+						  const char *sub_topic,
-+						  const char *pub_topic,
-+						  PkiObject_t root_ca_cert,
-+						  PkiObject_t device_cert,
-+						  PkiObject_t device_key)
-+{
-+	mqtt_config.host = host;
-+	mqtt_config.port = port;
-+	mqtt_config.duid = duid;
-+	mqtt_config.sub_topic = sub_topic;
-+	mqtt_config.pub_topic = pub_topic;
-+	mqtt_config.root_ca_cert = root_ca_cert;
-+	mqtt_config.client_certificate = device_cert;
-+	mqtt_config.private_key = device_key;
-+	return MQTTSuccess;
-+}
-+
-+
  /*-----------------------------------------------------------*/
  
+-void vMQTTAgentTask( void * pvParameters )
 +extern void vLogCertInfo( mbedtls_x509_crt * pxCert, const char * pcMessage );
 +
- void vMQTTAgentTask( void * pvParameters )
++#define MQTTS_PORT		8883
++
++void vMQTTAgentTask(void *arg)
  {
 -    MQTTStatus_t xMQTTStatus = MQTTSuccess;
-+    ( void ) pvParameters;
++	IotConnectDeviceClientConfig *client_config = arg;
++
++	mqtt_config.host = client_config->host;
++	mqtt_config.port = MQTTS_PORT;
++	mqtt_config.duid = client_config->duid;
++	mqtt_config.root_ca_cert = client_config->auth->mqtt_root_ca;
++	mqtt_config.client_certificate =
++			client_config->auth->data.cert_info.device_cert;
++	mqtt_config.private_key = client_config->auth->data.cert_info.device_key;
 +
 +	MQTTStatus_t xMQTTStatus = MQTTSuccess;
      TlsTransportStatus_t xTlsStatus = TLS_TRANSPORT_CONNECT_FAILURE;
      BaseType_t xExitFlag = pdFALSE;
  
-@@ -973,12 +1020,6 @@
+@@ -973,12 +1003,6 @@ void vMQTTAgentTask( void * pvParameters )
      NetworkContext_t * pxNetworkContext = NULL;
      uint16_t usNextRetryBackOff = 0U;
  
@@ -301,7 +445,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      /* Miscellaneous initialization. */
      ulGlobalEntryTimeMs = prvGetTimeMs();
  
-@@ -1004,14 +1045,14 @@
+@@ -1004,14 +1028,14 @@ void vMQTTAgentTask( void * pvParameters )
  
      if( xMQTTStatus == MQTTSuccess )
      {
@@ -321,7 +465,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
          {
              LogError( "Failed to configure mbedtls transport." );
              xMQTTStatus = MQTTBadParameter;
-@@ -1073,11 +1114,6 @@
+@@ -1073,11 +1097,6 @@ void vMQTTAgentTask( void * pvParameters )
              LogError( "Failed to configure socket recv ready callback." );
              xMQTTStatus = MQTTBadParameter;
          }
@@ -333,7 +477,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      }
  
      if( xMQTTStatus != MQTTSuccess )
-@@ -1138,11 +1174,6 @@
+@@ -1138,11 +1157,6 @@ void vMQTTAgentTask( void * pvParameters )
                      xExitFlag = pdTRUE;
                  }
              }
@@ -345,39 +489,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
          }
  
          if( xTlsStatus == TLS_TRANSPORT_SUCCESS )
-@@ -1191,6 +1222,31 @@
-             else
-             {
-                 LogError( "Failed to connect to mqtt broker." );
-+
-+                if (MQTTRecvFailed == xMQTTStatus)
-+                {
-+                    char *thing_name = KVStore_getStringHeap(CS_CORE_THING_NAME, NULL);   // Device ID
-+                    char subTopicString[MQTT_SUBSCRIBE_TOPIC_STR_LEN];
-+                    char pubTopicString[MQTT_PUBLISH_TOPIC_STR_LEN];
-+
-+                    int lSubTopicLen = snprintf(subTopicString, ( size_t ) MQTT_SUBSCRIBE_TOPIC_STR_LEN, SUBSCRIBE_TOPIC_FORMAT, thing_name);
-+                    if( ( lSubTopicLen <= 0 ) || ( lSubTopicLen > MQTT_SUBSCRIBE_TOPIC_STR_LEN) ) {
-+                        LogError( "Error while constructing subscribe topic string." );
-+                        vTaskDelete( NULL );
-+                    }
-+
-+                    int lPubTopicLen = snprintf(pubTopicString, ( size_t ) MQTT_PUBLISH_TOPIC_STR_LEN, PUBLISH_TOPIC_FORMAT, thing_name);
-+                    if( ( lPubTopicLen <= 0 ) || ( lPubTopicLen > MQTT_PUBLISH_TOPIC_STR_LEN) ) {
-+                        LogError( "Error while constructing ack publsh topic string, len: %d.", lPubTopicLen );
-+                        return -1;
-+                    }
-+
-+                    LogWarn("MQTT_Connect returned with status: %s\n", MQTT_Status_strerror( xMQTTStatus ));
-+                    LogInfo("Please check if your thing_name, MQTT endpoints, and topics.\n");
-+                    LogDebug("thing_name: %s\n", thing_name);
-+                    LogDebug("sub topic: %s\n", subTopicString);
-+                    LogDebug("pub topic: %s\n", pubTopicString);
-+                }
-             }
- 
-             /* Further reconnects will include a session resume operation */
-@@ -1229,7 +1285,6 @@
+@@ -1229,7 +1243,6 @@ void vMQTTAgentTask( void * pvParameters )
  
          mbedtls_transport_disconnect( pxNetworkContext );
  
@@ -385,10 +497,209 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
          ( void ) xEventGroupClearBits( xSystemEvents, EVT_MASK_MQTT_CONNECTED );
  
          /* Wait for any subscription related calls to complete */
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/config/kvstore_config.h iotc-freertos-stm32-h5-nogit/Projects/Common/config/kvstore_config.h
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/Common/config/kvstore_config.h	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/Common/config/kvstore_config.h	2024-05-03 13:36:36.572614583 +0100
-@@ -39,6 +39,8 @@
+diff --git a/Projects/Common/cli/logging.c b/Projects/Common/cli/logging.c
+index 56bec7f..575b7f8 100644
+--- a/Projects/Common/cli/logging.c
++++ b/Projects/Common/cli/logging.c
+@@ -284,6 +284,93 @@ void vLoggingPrintf( const char * const pcLogLevel,
+     }
+ }
+ 
++/* @brief	Variant of vLoggingPrintf that adds and err_code field.
++ */
++void vLoggingPrintf2(const char *const pcLogLevel, const char *const pcFileName,
++		const unsigned long ulLineNumber, int err_code,
++		const char *const pcFormat, ...) {
++	uint32_t ulLenTotal = 0;
++	int32_t lLenPart = -1;
++	va_list args;
++	const char *pcTaskName = NULL;
++	BaseType_t xSchedulerWasSuspended = pdFALSE;
++
++	/* Additional info to place at the start of the log line */
++	if (xTaskGetSchedulerState() != taskSCHEDULER_NOT_STARTED) {
++		pcTaskName = pcTaskGetName( NULL);
++	} else {
++		pcTaskName = "None";
++	}
++
++	if (xTaskGetSchedulerState() == taskSCHEDULER_RUNNING) {
++		xSchedulerWasSuspended = pdTRUE;
++		/* Suspend the scheduler to access pcPrintBuff */
++		vTaskSuspendAll();
++	}
++
++	pcPrintBuff[0] = '\0';
++	lLenPart = snprintf(pcPrintBuff,
++	dlMAX_PRINT_STRING_LENGTH, "<%-3.3s> %8lu [%-10.10s] %d ", pcLogLevel,
++			((unsigned long) xTaskGetTickCount() / portTICK_PERIOD_MS)
++					& 0xFFFFFF, pcTaskName, err_code);
++
++	configASSERT(lLenPart > 0);
++
++	if (lLenPart < dlMAX_PRINT_STRING_LENGTH) {
++		ulLenTotal = lLenPart;
++	} else {
++		ulLenTotal = dlMAX_PRINT_STRING_LENGTH;
++	}
++
++	if (ulLenTotal < dlMAX_PRINT_STRING_LENGTH) {
++		/* There are a variable number of parameters. */
++		va_start(args, pcFormat);
++		lLenPart = vsnprintf(&pcPrintBuff[ulLenTotal],
++				( dlMAX_PRINT_STRING_LENGTH - ulLenTotal), pcFormat, args);
++		va_end(args);
++
++		configASSERT(lLenPart > 0);
++
++		if (lLenPart + ulLenTotal < dlMAX_PRINT_STRING_LENGTH) {
++			ulLenTotal += lLenPart;
++		} else {
++			ulLenTotal = dlMAX_PRINT_STRING_LENGTH;
++		}
++	}
++
++	/* remove any \r\n\0 characters at the end of the message */
++	while (ulLenTotal > 0
++			&& (pcPrintBuff[ulLenTotal - 1] == '\r'
++					|| pcPrintBuff[ulLenTotal - 1] == '\n'
++					|| pcPrintBuff[ulLenTotal - 1] == '\0')) {
++		pcPrintBuff[ulLenTotal - 1] = '\0';
++		ulLenTotal--;
++	}
++
++	if ((pcFileName != NULL) && (ulLineNumber > 0)
++			&& (ulLenTotal < dlMAX_LOG_LINE_LENGTH)) {
++		/* Add the trailer including file name and line number */
++		lLenPart = snprintf(&pcPrintBuff[ulLenTotal],
++				( dlMAX_LOG_LINE_LENGTH - ulLenTotal), " (%s:%lu)", pcFileName,
++				ulLineNumber);
++
++		configASSERT(lLenPart > 0);
++
++		if (lLenPart + ulLenTotal < dlMAX_LOG_LINE_LENGTH) {
++			ulLenTotal += lLenPart;
++		} else {
++			ulLenTotal = dlMAX_LOG_LINE_LENGTH;
++		}
++	}
++
++	vSendLogMessage((void*) pcPrintBuff, ulLenTotal);
++
++	if (xSchedulerWasSuspended == pdTRUE) {
++		xTaskResumeAll();
++	}
++}
++
++
+ /*-----------------------------------------------------------*/
+ void vLoggingDeInit( void )
+ {
+diff --git a/Projects/Common/config/core_http_config.h b/Projects/Common/config/core_http_config.h
+index 04265d7..fab38d5 100644
+--- a/Projects/Common/config/core_http_config.h
++++ b/Projects/Common/config/core_http_config.h
+@@ -34,5 +34,10 @@
+ 
+ #include "logging.h"
+ 
++/*
++ *  HTTP Timeout set to 15000 milliseconds as default timeout of 10ms results in a timeout
++ *  before we get a response.
++ */
++#define HTTP_RECV_RETRY_TIMEOUT_MS    ( 15000U )
+ 
+ #endif /* CORE_HTTP_CONFIG_H */
+diff --git a/Projects/Common/config/iotcl_user_config.h b/Projects/Common/config/iotcl_user_config.h
+new file mode 100644
+index 0000000..4f66c40
+--- /dev/null
++++ b/Projects/Common/config/iotcl_user_config.h
+@@ -0,0 +1,56 @@
++/*
++ * iotcl_user_config.h
++ *
++ *  Created on: May 8, 2024
++ *      Author: mgilhespie
++ */
++
++#ifndef COMMON_CONFIG_IOTCL_USER_CONFIG_H_
++#define COMMON_CONFIG_IOTCL_USER_CONFIG_H_
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#include <logging.h>
++
++
++/* @brief 	Enable or Disable iot-connect logging using the IOTCL_ macros
++ *
++ * Remove the leading "//" comment marker from the lines below to disable logging
++ * for that log level.
++ */
++
++// #define IOTCL_ERROR(err_code, ...)
++// #define IOTCL_WARN(err_code, ...)
++// #define IOTCL_INFO(...)
++
++/* ------------------------------------------------------------------------ */
++
++#ifndef IOTCL_ERROR
++#define IOTCL_ERROR(err_code, ...) \
++    do { \
++        vLoggingPrintf2("ERR", __NAME_ARG__,__LINE__, err_code, __VA_ARGS__); \
++    } while(0)
++#endif
++
++#ifndef IOTCL_WARN
++#define IOTCL_WARN(err_code, ...) \
++    do { \
++        vLoggingPrintf2("WRN", __NAME_ARG__,__LINE__, err_code, __VA_ARGS__); \
++    } while(0)
++#endif
++
++#ifndef IOTCL_INFO
++#define IOTCL_INFO(...) \
++    do { \
++        vLoggingPrintf("INF", __NAME_ARG__,__LINE__, __VA_ARGS__); \
++    } while(0)
++#endif
++
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* COMMON_CONFIG_IOTCL_USER_CONFIG_H_ */
+diff --git a/Projects/Common/config/iotconnect_config.h b/Projects/Common/config/iotconnect_config.h
+new file mode 100644
+index 0000000..b636efd
+--- /dev/null
++++ b/Projects/Common/config/iotconnect_config.h
+@@ -0,0 +1,17 @@
++/*
++ * iotconnect_config.h
++ *
++ *  Created on: Nov 3, 2023
++ *      Author: mgilhespie
++ */
++
++#ifndef CONFIG_IOTCONNECT_CONFIG_H_
++#define CONFIG_IOTCONNECT_CONFIG_H_
++
++/* @brief Enable discovery and sync instead of providing mqtt endpoint and telemetry cd settings
++ */
++#define IOTCONFIG_USE_DISCOVERY_SYNC
++#define IOTCONFIG_ENABLE_OTA
++
++
++#endif /* CONFIG_IOTCONNECT_CONFIG_H_ */
+diff --git a/Projects/Common/config/kvstore_config.h b/Projects/Common/config/kvstore_config.h
+index f471dfb..700ee27 100644
+--- a/Projects/Common/config/kvstore_config.h
++++ b/Projects/Common/config/kvstore_config.h
+@@ -39,6 +39,8 @@ typedef enum KvStoreEnum
      CS_WIFI_SSID,
      CS_WIFI_CREDENTIAL,
      CS_TIME_HWM_S_1970,
@@ -397,7 +708,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      CS_NUM_KEYS
  } KVStoreKey_t;
  
-@@ -96,6 +98,14 @@
+@@ -96,6 +98,14 @@ typedef enum KvStoreEnum
  #if !defined( WIFI_SECURITY_DFLT )
  #define WIFI_SECURITY_DFLT    ""
  #endif /* !defined ( WIFI_SECURITY_DFLT ) */
@@ -412,7 +723,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  /* -------------------------------- Values for common attributes -------------------------------- */
  
  /* Array to map between strings and KVStoreKey_t IDs */
-@@ -106,7 +116,9 @@
+@@ -106,7 +116,9 @@ typedef enum KvStoreEnum
          "mqtt_port",       \
          "wifi_ssid",       \
          "wifi_credential", \
@@ -423,7 +734,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      }
  
  #define KV_STORE_DEFAULTS                                                          \
-@@ -117,6 +129,8 @@
+@@ -117,6 +129,8 @@ typedef enum KvStoreEnum
          KV_DFLT( KV_TYPE_STRING, WIFI_SSID_DFLT ),     /* CS_WIFI_SSID */          \
          KV_DFLT( KV_TYPE_STRING, WIFI_PASSWORD_DFLT ), /* CS_WIFI_CREDENTIAL */    \
          KV_DFLT( KV_TYPE_UINT32, 0 ),                  /* CS_TIME_HWM_S_1970 */    \
@@ -432,10 +743,11 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      }
  
  #endif /* _KVSTORE_CONFIG_H */
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h	2024-05-03 13:36:36.656614519 +0100
-@@ -533,35 +533,35 @@
+diff --git a/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h b/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h
+index a015e73..cbef365 100644
+--- a/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h
++++ b/Projects/STM32H573I-DK/aws_eth/Inc/mbedtls_config_ntz.h
+@@ -533,35 +533,35 @@ void mbedtls_platform_free( void * ptr );
   *
   * Enable Cipher Block Chaining mode (CBC) for symmetric ciphers.
   */
@@ -476,7 +788,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_NULL_CIPHER
-@@ -593,7 +593,7 @@
+@@ -593,7 +593,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment this macro to enable the NULL cipher and ciphersuites
   */
@@ -485,7 +797,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_PADDING_PKCS7
-@@ -606,10 +606,10 @@
+@@ -606,10 +606,10 @@ void mbedtls_platform_free( void * ptr );
   *
   * Enable padding modes in the cipher layer.
   */
@@ -500,7 +812,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /** \def MBEDTLS_CTR_DRBG_USE_128_BIT_KEY
   *
-@@ -627,20 +627,20 @@
+@@ -627,20 +627,20 @@ void mbedtls_platform_free( void * ptr );
   * Comment macros to disable the curve and functions for it
   */
  /* Short Weierstrass curves (supporting ECP, ECDH, ECDSA) */
@@ -533,7 +845,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ECP_NIST_OPTIM
-@@ -689,7 +689,7 @@
+@@ -689,7 +689,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable deterministic ECDSA.
   */
@@ -542,7 +854,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_PSK_ENABLED
-@@ -804,7 +804,7 @@
+@@ -804,7 +804,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256
   *      MBEDTLS_TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
   */
@@ -551,7 +863,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_DHE_RSA_ENABLED
-@@ -836,7 +836,7 @@
+@@ -836,7 +836,7 @@ void mbedtls_platform_free( void * ptr );
   *             See dhm.h for more details.
   *
   */
@@ -560,7 +872,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED
-@@ -859,7 +859,7 @@
+@@ -859,7 +859,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
   */
@@ -569,7 +881,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED
-@@ -903,7 +903,7 @@
+@@ -903,7 +903,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384
   */
@@ -578,7 +890,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDH_RSA_ENABLED
-@@ -925,7 +925,7 @@
+@@ -925,7 +925,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384
   */
@@ -587,7 +899,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECJPAKE_ENABLED
-@@ -958,7 +958,7 @@
+@@ -958,7 +958,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Disable if you only need to support RFC 5915 + 5480 key formats.
   */
@@ -596,7 +908,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ERROR_STRERROR_DUMMY
-@@ -982,7 +982,7 @@
+@@ -982,7 +982,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_BIGNUM_C
   */
@@ -605,7 +917,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_FS_IO
-@@ -1318,7 +1318,7 @@
+@@ -1318,7 +1318,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable the Connection ID extension.
   */
@@ -614,7 +926,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_ASYNC_PRIVATE
-@@ -1488,7 +1488,7 @@
+@@ -1488,7 +1488,7 @@ void mbedtls_platform_free( void * ptr );
   * Uncomment this macro to enable experimental and partial
   * functionality specific to TLS 1.3.
   */
@@ -623,7 +935,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_PROTO_DTLS
-@@ -1501,7 +1501,7 @@
+@@ -1501,7 +1501,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable support for DTLS
   */
@@ -632,7 +944,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_ALPN
-@@ -1525,7 +1525,7 @@
+@@ -1525,7 +1525,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable anti-replay in DTLS.
   */
@@ -641,7 +953,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_HELLO_VERIFY
-@@ -1543,7 +1543,7 @@
+@@ -1543,7 +1543,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable support for HelloVerifyRequest.
   */
@@ -650,7 +962,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_SRTP
-@@ -1574,7 +1574,7 @@
+@@ -1574,7 +1574,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment this to enable support for use_srtp extension.
   */
@@ -659,7 +971,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE
-@@ -1590,7 +1590,7 @@
+@@ -1590,7 +1590,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable support for clients reusing the source port.
   */
@@ -668,7 +980,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_SESSION_TICKETS
-@@ -1614,7 +1614,7 @@
+@@ -1614,7 +1614,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable support for key export
   */
@@ -677,7 +989,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_SERVER_NAME_INDICATION
-@@ -1635,7 +1635,7 @@
+@@ -1635,7 +1635,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_SSL_MAX_FRAGMENT_LENGTH
   */
@@ -686,7 +998,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_TEST_CONSTANT_FLOW_MEMSAN
-@@ -1786,7 +1786,7 @@
+@@ -1786,7 +1786,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable trusted certificate callbacks.
   */
@@ -695,7 +1007,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_REMOVE_INFO
-@@ -1807,7 +1807,7 @@
+@@ -1807,7 +1807,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disallow using RSASSA-PSS in certificates.
   */
@@ -704,7 +1016,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  /* \} name SECTION: mbed TLS feature support */
  
  /**
-@@ -2082,7 +2082,7 @@
+@@ -2082,7 +2082,7 @@ void mbedtls_platform_free( void * ptr );
   * This module enables the AES-CCM ciphersuites, if other requisites are
   * enabled as well.
   */
@@ -713,7 +1025,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CHACHA20_C
-@@ -2091,7 +2091,7 @@
+@@ -2091,7 +2091,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Module:  library/chacha20.c
   */
@@ -722,7 +1034,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CHACHAPOLY_C
-@@ -2102,7 +2102,7 @@
+@@ -2102,7 +2102,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module requires: MBEDTLS_CHACHA20_C, MBEDTLS_POLY1305_C
   */
@@ -731,7 +1043,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_C
-@@ -2182,7 +2182,7 @@
+@@ -2182,7 +2182,7 @@ void mbedtls_platform_free( void * ptr );
   * \warning   DES is considered a weak cipher and its use constitutes a
   *            security risk. We recommend considering stronger ciphers instead.
   */
@@ -740,7 +1052,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_DHM_C
-@@ -2203,7 +2203,7 @@
+@@ -2203,7 +2203,7 @@ void mbedtls_platform_free( void * ptr );
   *             See dhm.h for more details.
   *
   */
@@ -749,7 +1061,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ECDH_C
-@@ -2324,7 +2324,7 @@
+@@ -2324,7 +2324,7 @@ void mbedtls_platform_free( void * ptr );
   * This module adds support for the Hashed Message Authentication Code
   * (HMAC)-based key derivation function (HKDF).
   */
@@ -758,7 +1070,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_HMAC_DRBG_C
-@@ -2338,7 +2338,7 @@
+@@ -2338,7 +2338,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable the HMAC_DRBG random number geerator.
   */
@@ -767,7 +1079,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_NIST_KW_C
-@@ -2351,7 +2351,7 @@
+@@ -2351,7 +2351,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_AES_C and MBEDTLS_CIPHER_C
   */
@@ -776,7 +1088,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_MD_C
-@@ -2384,7 +2384,7 @@
+@@ -2384,7 +2384,7 @@ void mbedtls_platform_free( void * ptr );
   *            it, and considering stronger message digests instead.
   *
   */
@@ -785,7 +1097,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_MEMORY_BUFFER_ALLOC_C
-@@ -2548,7 +2548,7 @@
+@@ -2548,7 +2548,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module adds support for the PKCS#5 functions.
   */
@@ -794,7 +1106,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PKCS12_C
-@@ -2563,7 +2563,7 @@
+@@ -2563,7 +2563,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module enables PKCS#12 functions.
   */
@@ -803,7 +1115,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PLATFORM_C
-@@ -2593,7 +2593,7 @@
+@@ -2593,7 +2593,7 @@ void mbedtls_platform_free( void * ptr );
   * Module:  library/poly1305.c
   * Caller:  library/chachapoly.c
   */
@@ -812,7 +1124,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PSA_CRYPTO_C
-@@ -2793,7 +2793,7 @@
+@@ -2793,7 +2793,7 @@ void mbedtls_platform_free( void * ptr );
   * Module:  library/ssl_cookie.c
   * Caller:
   */
@@ -821,7 +1133,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_TICKET_C
-@@ -2805,7 +2805,7 @@
+@@ -2805,7 +2805,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_CIPHER_C
   */
@@ -830,7 +1142,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_CLI_C
-@@ -2951,7 +2951,7 @@
+@@ -2951,7 +2951,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module is required for X.509 CRL parsing.
   */
@@ -839,7 +1151,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_CSR_PARSE_C
-@@ -2965,7 +2965,7 @@
+@@ -2965,7 +2965,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module is used for reading X.509 certificate request.
   */
@@ -848,9 +1160,154 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_CREATE_C
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/Src/app_main.c iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/Src/app_main.c
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/Src/app_main.c	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/Src/app_main.c	2024-05-03 13:36:36.676614504 +0100
+diff --git a/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject b/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject
+index 434e6c8..0e30361 100644
+--- a/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject
++++ b/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject
+@@ -34,6 +34,9 @@
+ 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols.904588808" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols" valueType="definedSymbols">
+ 									<listOptionValue builtIn="false" value="DEBUG"/>
+ 								</option>
++								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.390563873" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
++									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/IoTConnect/iotc-freertos-sdk/smart-inc}&quot;"/>
++								</option>
+ 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1287599341" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
+ 							</tool>
+ 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.736483198" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
+@@ -47,6 +50,7 @@
+ 									<listOptionValue builtIn="false" value="STM32H573xx"/>
+ 									<listOptionValue builtIn="false" value="CMSIS_device_header=&quot;main.h&quot;"/>
+ 									<listOptionValue builtIn="false" value="UNITY_INCLUDE_CONFIG_H"/>
++									<listOptionValue builtIn="false" value="IOTCL_USER_CONFIG_FILE=&quot;iotcl_user_config.h&quot;"/>
+ 								</option>
+ 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths.1536789643" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.includepaths" useByScannerDiscovery="false" valueType="includePath">
+ 									<listOptionValue builtIn="false" value="../../../../../Drivers/STM32H5xx_HAL_Driver/Inc"/>
+@@ -74,6 +78,7 @@
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/kernel/portable/GCC/ARM_CM33_NTZ/non_secure"/>
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreJSON/source/include"/>
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT/source/include"/>
++									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreHTTP/source/include"/>
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT/source/interface"/>
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT-Agent/source/include"/>
+ 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/corePKCS11/source/include"/>
+@@ -94,6 +99,7 @@
+ 									<listOptionValue builtIn="false" value="../../Src/fs"/>
+ 									<listOptionValue builtIn="false" value="../../Src/ota_pal"/>
+ 									<listOptionValue builtIn="false" value="../../Inc"/>
++									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/IoTConnect/iotc-freertos-sdk/smart-inc}&quot;"/>
+ 								</option>
+ 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data.1546247664" name="Assume loading data from flash is slower than fetching instruction (-mslow-flash-data)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+ 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.769522104" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
+@@ -120,6 +126,9 @@
+ 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1119651757" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
+ 						</toolChain>
+ 					</folderInfo>
++					<sourceEntries>
++						<entry excluding="my-middlewares|IotC-middlewares" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
++					</sourceEntries>
+ 				</configuration>
+ 			</storageModule>
+ 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+diff --git a/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project b/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project
+index 1e49342..fa23b76 100644
+--- a/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project
++++ b/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project
+@@ -32,6 +32,11 @@
+ 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
+ 	</natures>
+ 	<linkedResources>
++		<link>
++			<name>IoTConnect</name>
++			<type>2</type>
++			<locationURI>PARENT-4-PROJECT_LOC/IoTConnect</locationURI>
++		</link>
+ 		<link>
+ 			<name>STM32H573I-DK_aws_eth.ioc</name>
+ 			<type>1</type>
+@@ -372,6 +377,16 @@
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/ccm.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/chacha20.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chacha20.c</locationURI>
++		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/chachapoly.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chachapoly.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/cipher.c</name>
+ 			<type>1</type>
+@@ -402,6 +417,11 @@
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/debug.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/des.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/des.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/dhm.c</name>
+ 			<type>1</type>
+@@ -462,11 +482,21 @@
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/md5.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md5.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/memory_buffer_alloc.c</name>
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/memory_buffer_alloc.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/nist_kw.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/nist_kw.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/oid.c</name>
+ 			<type>1</type>
+@@ -492,6 +522,16 @@
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pk_wrap.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/pkcs12.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs12.c</locationURI>
++		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/pkcs5.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs5.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/pkparse.c</name>
+ 			<type>1</type>
+@@ -512,6 +552,11 @@
+ 			<type>1</type>
+ 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/platform_util.c</locationURI>
+ 		</link>
++		<link>
++			<name>Middlewares/ARM/mbedtls/poly1305.c</name>
++			<type>1</type>
++			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/poly1305.c</locationURI>
++		</link>
+ 		<link>
+ 			<name>Middlewares/ARM/mbedtls/rsa.c</name>
+ 			<type>1</type>
+diff --git a/Projects/STM32H573I-DK/aws_eth/Src/app_main.c b/Projects/STM32H573I-DK/aws_eth/Src/app_main.c
+index fd2f3ab..ab31745 100644
+--- a/Projects/STM32H573I-DK/aws_eth/Src/app_main.c
++++ b/Projects/STM32H573I-DK/aws_eth/Src/app_main.c
 @@ -45,6 +45,8 @@
  
  #include "stdlib.h" /* rand() */
@@ -873,7 +1330,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  static lfs_t * pxLfsCtx = NULL;
  
  EventGroupHandle_t xSystemEvents = NULL;
-@@ -132,18 +140,82 @@
+@@ -132,18 +140,82 @@ static int fs_init( void )
      return err;
  }
  
@@ -893,7 +1350,8 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +}
 +#endif // IOTC_USE_LED
 +
-+void iotc_process_cmd_str(IotclEventData data, char* command){
++int iotc_process_cmd_str(IotclC2dEventData data, char* command){
++	int err = -1;
 +    LogInfo("Received command: %s", command);
 +
 +    if(NULL != strcasestr(command, IOTC_CMD_PING)){
@@ -902,7 +1360,6 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +    } else if(NULL != strcasestr(command, IOTC_CMD_LED_RED)){
 +        if (NULL != strcasestr(command, "on")) {
 +            LogInfo("led-red on");
-+            //BSP_LED_On(LED_RED);
 +            set_led_red(true);
 +        } else if (NULL != strcasestr(command, "off")) {
 +            LogInfo("led-red off");
@@ -910,7 +1367,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +        } else {
 +            LogWarn("Invalid led-red command received: %s", command);
 +        }
-+        command_status(data, true, command, "OK");
++        err = 0;
 +    } else if(NULL != strcasestr(command, IOTC_CMD_LED_GREEN)) {
 +        if (NULL != strcasestr(command, "on")) {
 +            LogInfo("led-green on");
@@ -921,7 +1378,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +        } else {
 +            LogWarn("Invalid led-green command received: %s", command);
 +        }
-+        command_status(data, true, command, "OK");
++        err = 0;
 +    } else if(NULL != strcasestr(command, IOTC_CMD_LED_FREQ)) {
 +        // Get the int following the command
 +        int led_freq = atoi(command + strlen(IOTC_CMD_LED_FREQ) + 1);
@@ -931,8 +1388,8 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +#endif // IOTC_USE_LED
 +    } else {
 +        LogInfo("Command not recognized: %s", command);
-+        command_status(data, false, command, "Not implemented");
 +    }
++	return err;
 +}
 +
  static void vHeartbeatTask( void * pvParameters )
@@ -961,7 +1418,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
      }
  }
  
-@@ -155,6 +227,7 @@
+@@ -155,6 +227,7 @@ extern void vOTAUpdateTask( void * pvParam );
  extern void vDefenderAgentTask( void * );
  extern void vSensorDataPublishTask( void * pvParameters );
  extern void vShadowUpdateTask( void * pvParameters );
@@ -969,11 +1426,23 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  #if DEMO_QUALIFICATION_TEST
  extern void run_qualification_main( void * );
  #endif /* DEMO_QUALIFICATION_TEST */
-@@ -205,20 +278,24 @@
+@@ -205,20 +278,24 @@ void vInitTask( void * pvArgs )
      xResult = xTaskCreate( run_qualification_main, "QualTest", 4096, NULL, 10, NULL );
      configASSERT( xResult == pdTRUE );
  #else
 -    xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
+-    configASSERT( xResult == pdTRUE );
+-
+-    xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 1, NULL );
+-    configASSERT( xResult == pdTRUE );
+-
+-    xResult = xTaskCreate( vSensorPublishTask, "Sense", 512, NULL, 6, NULL );
+-    configASSERT( xResult == pdTRUE );
+-
+-    xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
+-    configASSERT( xResult == pdTRUE );
+-
+-    xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
 -    configASSERT( xResult == pdTRUE );
 +    //    xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
 +    //    configASSERT( xResult == pdTRUE );
@@ -990,229 +1459,17 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +    //    xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
 +    //    configASSERT( xResult == pdTRUE );
 +        LogInfo("IOTC RUNNING\n");
- 
--    xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 1, NULL );
--    configASSERT( xResult == pdTRUE );
--
--    xResult = xTaskCreate( vSensorPublishTask, "Sense", 512, NULL, 6, NULL );
--    configASSERT( xResult == pdTRUE );
--
--    xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
--    configASSERT( xResult == pdTRUE );
--
--    xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
--    configASSERT( xResult == pdTRUE );
++
 +        xResult = xTaskCreate( iotconnect_app, "iotconnect_app", 4096, NULL, 5, NULL );
 +        configASSERT( xResult == pdTRUE );
  #endif /* DEMO_QUALIFICATION_TEST */
  
      while( 1 )
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.cproject	2024-05-03 13:36:36.684614497 +0100
-@@ -34,6 +34,9 @@
- 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols.904588808" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols" valueType="definedSymbols">
- 									<listOptionValue builtIn="false" value="DEBUG"/>
- 								</option>
-+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.390563873" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
-+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/IoTConnect/iotc-freertos-sdk/smart-inc}&quot;"/>
-+								</option>
- 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1287599341" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
- 							</tool>
- 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.736483198" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
-@@ -74,6 +77,7 @@
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/kernel/portable/GCC/ARM_CM33_NTZ/non_secure"/>
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreJSON/source/include"/>
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT/source/include"/>
-+									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreHTTP/source/include"/>
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT/source/interface"/>
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/coreMQTT-Agent/source/include"/>
- 									<listOptionValue builtIn="false" value="../../../../../Middleware/FreeRTOS/corePKCS11/source/include"/>
-@@ -94,6 +98,7 @@
- 									<listOptionValue builtIn="false" value="../../Src/fs"/>
- 									<listOptionValue builtIn="false" value="../../Src/ota_pal"/>
- 									<listOptionValue builtIn="false" value="../../Inc"/>
-+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/IoTConnect/iotc-freertos-sdk/smart-inc}&quot;"/>
- 								</option>
- 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data.1546247664" name="Assume loading data from flash is slower than fetching instruction (-mslow-flash-data)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data" useByScannerDiscovery="false" value="true" valueType="boolean"/>
- 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.769522104" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
-@@ -120,6 +125,9 @@
- 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec.1119651757" name="MCU Output Converter Motorola S-rec with symbols" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.objcopy.symbolsrec"/>
- 						</toolChain>
- 					</folderInfo>
-+					<sourceEntries>
-+						<entry excluding="my-middlewares|IotC-middlewares" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
-+					</sourceEntries>
- 				</configuration>
- 			</storageModule>
- 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-@@ -140,5 +148,9 @@
- 		</scannerConfigBuildInfo>
- 	</storageModule>
- 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
--	<storageModule moduleId="refreshScope"/>
-+	<storageModule moduleId="refreshScope" versionNumber="2">
-+		<configuration configurationName="Debug">
-+			<resource resourceType="PROJECT" workspacePath="/STM32H573I-DK_aws_eth"/>
-+		</configuration>
-+	</storageModule>
- </cproject>
-\ No newline at end of file
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/.project	2024-05-03 13:36:36.684614497 +0100
-@@ -33,6 +33,11 @@
- 	</natures>
- 	<linkedResources>
- 		<link>
-+			<name>IoTConnect</name>
-+			<type>2</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/IoTConnect</locationURI>
-+		</link>
-+		<link>
- 			<name>STM32H573I-DK_aws_eth.ioc</name>
- 			<type>1</type>
- 			<locationURI>PARENT-1-PROJECT_LOC/STM32H573I-DK_aws_eth.ioc</locationURI>
-@@ -373,6 +378,16 @@
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/ccm.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/chacha20.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chacha20.c</locationURI>
-+		</link>
-+		<link>
-+			<name>Middlewares/ARM/mbedtls/chachapoly.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chachapoly.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/cipher.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/cipher.c</locationURI>
-@@ -403,6 +418,11 @@
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/debug.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/des.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/des.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/dhm.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/dhm.c</locationURI>
-@@ -463,11 +483,21 @@
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/md5.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md5.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/memory_buffer_alloc.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/memory_buffer_alloc.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/nist_kw.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/nist_kw.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/oid.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/oid.c</locationURI>
-@@ -493,6 +523,16 @@
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pk_wrap.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/pkcs12.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs12.c</locationURI>
-+		</link>
-+		<link>
-+			<name>Middlewares/ARM/mbedtls/pkcs5.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs5.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/pkparse.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkparse.c</locationURI>
-@@ -513,6 +553,11 @@
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/platform_util.c</locationURI>
- 		</link>
- 		<link>
-+			<name>Middlewares/ARM/mbedtls/poly1305.c</name>
-+			<type>1</type>
-+			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/poly1305.c</locationURI>
-+		</link>
-+		<link>
- 			<name>Middlewares/ARM/mbedtls/rsa.c</name>
- 			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/rsa.c</locationURI>
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/STM32H573I-DK_aws_eth.launch iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/STM32H573I-DK_aws_eth.launch
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/STM32H573I-DK_aws_eth.launch	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/STM32H573I-DK_aws_eth.launch	2024-05-03 13:36:36.684614497 +0100
-@@ -12,7 +12,7 @@
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.ip_address_local" value="localhost"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.enabled" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.value" value=""/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.loadList" value="{&quot;fItems&quot;:[{&quot;fIsFromMainTab&quot;:true,&quot;fPath&quot;:&quot;Debug/aws_eth.elf&quot;,&quot;fProjectName&quot;:&quot;aws_eth&quot;,&quot;fPerformBuild&quot;:true,&quot;fDownload&quot;:true,&quot;fLoadSymbols&quot;:true}]}"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.loadList" value="{&quot;fItems&quot;:[{&quot;fIsFromMainTab&quot;:true,&quot;fPath&quot;:&quot;Debug/STM32H573I-DK_aws_eth.elf&quot;,&quot;fProjectName&quot;:&quot;STM32H573I-DK_aws_eth&quot;,&quot;fPerformBuild&quot;:true,&quot;fDownload&quot;:true,&quot;fLoadSymbols&quot;:true}]}"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.override_start_address_mode" value="default"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.remoteCommand" value="target remote"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.startServer" value="true"/>
-@@ -32,20 +32,20 @@
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.enable_shared_stlink" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.frequency" value="0"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.halt_all_on_reset" value="false"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="S:\Projects\STM32H573I-DK\aws_eth\STM32CubeIDE\Debug\st-link_gdbserver_log.txt"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="/home/ylin/work/IoT/x-cube-aws-h5/Projects/STM32H573I-DK/aws_eth/STM32CubeIDE/Debug/st-link_gdbserver_log.txt"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.low_power_debug" value="enable"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.max_halt_delay" value="2"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.reset_strategy" value="connect_under_reset"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.stlink_check_serial_number" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.stlink_txt_serial_number" value=""/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.watchdog_config" value="none"/>
--    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkenable_rtos" value="true"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkrestart_configurations" value="{&quot;fVersion&quot;:1,&quot;fItems&quot;:[{&quot;fDisplayName&quot;:&quot;Reset&quot;,&quot;fIsSuppressible&quot;:false,&quot;fResetAttribute&quot;:&quot;Software system reset&quot;,&quot;fResetStrategies&quot;:[{&quot;fDisplayName&quot;:&quot;Software system reset&quot;,&quot;fLaunchAttribute&quot;:&quot;system_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Hardware reset&quot;,&quot;fLaunchAttribute&quot;:&quot;hardware_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset hardware\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Core reset&quot;,&quot;fLaunchAttribute&quot;:&quot;core_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset core\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;None&quot;,&quot;fLaunchAttribute&quot;:&quot;no_reset&quot;,&quot;fGdbCommands&quot;:[],&quot;fCmdOptions&quot;:[&quot;-g&quot;]}],&quot;fGdbCommandGroup&quot;:{&quot;name&quot;:&quot;Additional commands&quot;,&quot;commands&quot;:[]},&quot;fStartApplication&quot;:true}]}"/>
--    <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.enableRtosProxy" value="true"/>
-+    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkenable_rtos" value="false"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkrestart_configurations" value="{&quot;fVersion&quot;:1,&quot;fItems&quot;:[{&quot;fDisplayName&quot;:&quot;Reset&quot;,&quot;fIsSuppressible&quot;:false,&quot;fResetAttribute&quot;:&quot;Software system reset&quot;,&quot;fResetStrategies&quot;:[{&quot;fDisplayName&quot;:&quot;Software system reset&quot;,&quot;fLaunchAttribute&quot;:&quot;system_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Hardware reset&quot;,&quot;fLaunchAttribute&quot;:&quot;hardware_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset hardware\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Core reset&quot;,&quot;fLaunchAttribute&quot;:&quot;core_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset core\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;None&quot;,&quot;fLaunchAttribute&quot;:&quot;no_reset&quot;,&quot;fGdbCommands&quot;:[],&quot;fCmdOptions&quot;:[&quot;-g&quot;]}],&quot;fGdbCommandGroup&quot;:{&quot;name&quot;:&quot;Additional commands&quot;,&quot;commands&quot;:[]},&quot;fStartApplication&quot;:true}]}"/>
-+    <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.enableRtosProxy" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyCustomProperties" value=""/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriver" value="freertos"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriver" value="threadx"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverAuto" value="false"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverPort" value="ARM_CM33_NTZ"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverPort" value="cortex_m0"/>
-     <intAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyPort" value="60000"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="false"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
-@@ -67,13 +67,13 @@
-     <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="remote"/>
-     <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
-     <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="main"/>
--    <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/aws_eth.elf"/>
--    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="aws_eth"/>
-+    <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/STM32H573I-DK_aws_eth.elf"/>
-+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="STM32H573I-DK_aws_eth"/>
-     <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
-     <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.790736897"/>
-     <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
-     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
--        <listEntry value="/aws_eth"/>
-+        <listEntry value="/STM32H573I-DK_aws_eth"/>
-     </listAttribute>
-     <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
-         <listEntry value="4"/>
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h	2024-05-03 13:36:40.224611809 +0100
-@@ -533,35 +533,35 @@
+diff --git a/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h b/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h
+index a1ede14..35915e1 100644
+--- a/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h
++++ b/Projects/STM32H573I-DK/aws_eth_tz/Inc/mbedtls_config_psa.h
+@@ -533,35 +533,35 @@ void mbedtls_platform_free( void * ptr );
   *
   * Enable Cipher Block Chaining mode (CBC) for symmetric ciphers.
   */
@@ -1253,7 +1510,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_NULL_CIPHER
-@@ -593,7 +593,7 @@
+@@ -593,7 +593,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment this macro to enable the NULL cipher and ciphersuites
   */
@@ -1262,7 +1519,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_PADDING_PKCS7
-@@ -606,10 +606,10 @@
+@@ -606,10 +606,10 @@ void mbedtls_platform_free( void * ptr );
   *
   * Enable padding modes in the cipher layer.
   */
@@ -1277,7 +1534,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /** \def MBEDTLS_CTR_DRBG_USE_128_BIT_KEY
   *
-@@ -627,20 +627,20 @@
+@@ -627,20 +627,20 @@ void mbedtls_platform_free( void * ptr );
   * Comment macros to disable the curve and functions for it
   */
  /* Short Weierstrass curves (supporting ECP, ECDH, ECDSA) */
@@ -1310,7 +1567,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ECP_NIST_OPTIM
-@@ -689,7 +689,7 @@
+@@ -689,7 +689,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable deterministic ECDSA.
   */
@@ -1319,7 +1576,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_PSK_ENABLED
-@@ -804,7 +804,7 @@
+@@ -804,7 +804,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_RSA_WITH_CAMELLIA_128_CBC_SHA256
   *      MBEDTLS_TLS_RSA_WITH_CAMELLIA_128_CBC_SHA
   */
@@ -1328,7 +1585,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_DHE_RSA_ENABLED
-@@ -836,7 +836,7 @@
+@@ -836,7 +836,7 @@ void mbedtls_platform_free( void * ptr );
   *             See dhm.h for more details.
   *
   */
@@ -1337,7 +1594,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED
-@@ -859,7 +859,7 @@
+@@ -859,7 +859,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDHE_RSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDHE_RSA_WITH_CAMELLIA_128_CBC_SHA256
   */
@@ -1346,7 +1603,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDHE_ECDSA_ENABLED
-@@ -903,7 +903,7 @@
+@@ -903,7 +903,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDH_ECDSA_WITH_CAMELLIA_256_GCM_SHA384
   */
@@ -1355,7 +1612,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECDH_RSA_ENABLED
-@@ -925,7 +925,7 @@
+@@ -925,7 +925,7 @@ void mbedtls_platform_free( void * ptr );
   *      MBEDTLS_TLS_ECDH_RSA_WITH_CAMELLIA_128_GCM_SHA256
   *      MBEDTLS_TLS_ECDH_RSA_WITH_CAMELLIA_256_GCM_SHA384
   */
@@ -1364,7 +1621,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_KEY_EXCHANGE_ECJPAKE_ENABLED
-@@ -958,7 +958,7 @@
+@@ -958,7 +958,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Disable if you only need to support RFC 5915 + 5480 key formats.
   */
@@ -1373,7 +1630,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ERROR_STRERROR_DUMMY
-@@ -982,7 +982,7 @@
+@@ -982,7 +982,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_BIGNUM_C
   */
@@ -1382,7 +1639,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_FS_IO
-@@ -1318,7 +1318,7 @@
+@@ -1318,7 +1318,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable the Connection ID extension.
   */
@@ -1391,7 +1648,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_ASYNC_PRIVATE
-@@ -1488,7 +1488,7 @@
+@@ -1488,7 +1488,7 @@ void mbedtls_platform_free( void * ptr );
   * Uncomment this macro to enable experimental and partial
   * functionality specific to TLS 1.3.
   */
@@ -1400,7 +1657,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_PROTO_DTLS
-@@ -1501,7 +1501,7 @@
+@@ -1501,7 +1501,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable support for DTLS
   */
@@ -1409,7 +1666,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_ALPN
-@@ -1525,7 +1525,7 @@
+@@ -1525,7 +1525,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable anti-replay in DTLS.
   */
@@ -1418,7 +1675,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_HELLO_VERIFY
-@@ -1543,7 +1543,7 @@
+@@ -1543,7 +1543,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable support for HelloVerifyRequest.
   */
@@ -1427,7 +1684,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_SRTP
-@@ -1574,7 +1574,7 @@
+@@ -1574,7 +1574,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment this to enable support for use_srtp extension.
   */
@@ -1436,7 +1693,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE
-@@ -1590,7 +1590,7 @@
+@@ -1590,7 +1590,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this to disable support for clients reusing the source port.
   */
@@ -1445,7 +1702,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_SESSION_TICKETS
-@@ -1614,7 +1614,7 @@
+@@ -1614,7 +1614,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disable support for key export
   */
@@ -1454,7 +1711,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_SERVER_NAME_INDICATION
-@@ -1635,7 +1635,7 @@
+@@ -1635,7 +1635,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_SSL_MAX_FRAGMENT_LENGTH
   */
@@ -1463,7 +1720,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_TEST_CONSTANT_FLOW_MEMSAN
-@@ -1786,7 +1786,7 @@
+@@ -1786,7 +1786,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable trusted certificate callbacks.
   */
@@ -1472,7 +1729,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_REMOVE_INFO
-@@ -1807,7 +1807,7 @@
+@@ -1807,7 +1807,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Comment this macro to disallow using RSASSA-PSS in certificates.
   */
@@ -1481,7 +1738,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  /* \} name SECTION: mbed TLS feature support */
  
  /**
-@@ -2082,7 +2082,7 @@
+@@ -2082,7 +2082,7 @@ void mbedtls_platform_free( void * ptr );
   * This module enables the AES-CCM ciphersuites, if other requisites are
   * enabled as well.
   */
@@ -1490,7 +1747,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CHACHA20_C
-@@ -2091,7 +2091,7 @@
+@@ -2091,7 +2091,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Module:  library/chacha20.c
   */
@@ -1499,7 +1756,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CHACHAPOLY_C
-@@ -2102,7 +2102,7 @@
+@@ -2102,7 +2102,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module requires: MBEDTLS_CHACHA20_C, MBEDTLS_POLY1305_C
   */
@@ -1508,7 +1765,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_CIPHER_C
-@@ -2182,7 +2182,7 @@
+@@ -2182,7 +2182,7 @@ void mbedtls_platform_free( void * ptr );
   * \warning   DES is considered a weak cipher and its use constitutes a
   *            security risk. We recommend considering stronger ciphers instead.
   */
@@ -1517,7 +1774,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_DHM_C
-@@ -2203,7 +2203,7 @@
+@@ -2203,7 +2203,7 @@ void mbedtls_platform_free( void * ptr );
   *             See dhm.h for more details.
   *
   */
@@ -1526,7 +1783,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_ECDH_C
-@@ -2324,7 +2324,7 @@
+@@ -2324,7 +2324,7 @@ void mbedtls_platform_free( void * ptr );
   * This module adds support for the Hashed Message Authentication Code
   * (HMAC)-based key derivation function (HKDF).
   */
@@ -1535,7 +1792,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_HMAC_DRBG_C
-@@ -2338,7 +2338,7 @@
+@@ -2338,7 +2338,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Uncomment to enable the HMAC_DRBG random number geerator.
   */
@@ -1544,7 +1801,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_NIST_KW_C
-@@ -2351,7 +2351,7 @@
+@@ -2351,7 +2351,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_AES_C and MBEDTLS_CIPHER_C
   */
@@ -1553,7 +1810,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_MD_C
-@@ -2384,7 +2384,7 @@
+@@ -2384,7 +2384,7 @@ void mbedtls_platform_free( void * ptr );
   *            it, and considering stronger message digests instead.
   *
   */
@@ -1562,7 +1819,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_MEMORY_BUFFER_ALLOC_C
-@@ -2548,7 +2548,7 @@
+@@ -2548,7 +2548,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module adds support for the PKCS#5 functions.
   */
@@ -1571,7 +1828,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PKCS12_C
-@@ -2563,7 +2563,7 @@
+@@ -2563,7 +2563,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module enables PKCS#12 functions.
   */
@@ -1580,7 +1837,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PLATFORM_C
-@@ -2593,7 +2593,7 @@
+@@ -2593,7 +2593,7 @@ void mbedtls_platform_free( void * ptr );
   * Module:  library/poly1305.c
   * Caller:  library/chachapoly.c
   */
@@ -1589,7 +1846,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_PSA_CRYPTO_C
-@@ -2682,7 +2682,7 @@
+@@ -2682,7 +2682,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_BIGNUM_C, MBEDTLS_OID_C
   */
@@ -1598,7 +1855,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SHA1_C
-@@ -2793,7 +2793,7 @@
+@@ -2793,7 +2793,7 @@ void mbedtls_platform_free( void * ptr );
   * Module:  library/ssl_cookie.c
   * Caller:
   */
@@ -1607,7 +1864,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_TICKET_C
-@@ -2805,7 +2805,7 @@
+@@ -2805,7 +2805,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * Requires: MBEDTLS_CIPHER_C
   */
@@ -1616,7 +1873,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_SSL_CLI_C
-@@ -2951,7 +2951,7 @@
+@@ -2951,7 +2951,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module is required for X.509 CRL parsing.
   */
@@ -1625,7 +1882,7 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_CSR_PARSE_C
-@@ -2965,7 +2965,7 @@
+@@ -2965,7 +2965,7 @@ void mbedtls_platform_free( void * ptr );
   *
   * This module is used for reading X.509 certificate request.
   */
@@ -1634,171 +1891,15 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  
  /**
   * \def MBEDTLS_X509_CREATE_C
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c	2024-05-03 13:36:40.244611794 +0100
-@@ -37,10 +37,14 @@
- #include "psa/crypto.h"
- 
- #include "cli.h"
-+#include "lfs.h"
-+#include "lfs_port.h"
- #include "test_execution_config.h"
- #include "semphr.h"
- #include "stdlib.h" /* rand() */
- 
-+#include "iotconnect_app.h"
-+
- /* Definition for Qualification Test */
- #if ( DEVICE_ADVISOR_TEST_ENABLED == 1 ) || ( MQTT_TEST_ENABLED == 1 ) || ( TRANSPORT_INTERFACE_TEST_ENABLED == 1 ) || \
-     ( OTA_PAL_TEST_ENABLED == 1 ) || ( OTA_E2E_TEST_ENABLED == 1 ) || ( CORE_PKCS11_TEST_ENABLED == 1 )
-@@ -53,20 +57,91 @@
- 
- #define SRAM3_NS_SIZE (128 * 1024)
- 
-+#ifdef IOTC_USE_LED
-+volatile bool led_red_state   = true;
-+volatile bool led_green_state = true;
-+volatile int  led_freq_ms     = 1000;
-+#endif
-+
-+static lfs_t * pxLfsCtx = NULL;
-+
- EventGroupHandle_t xSystemEvents = NULL;
-+#ifdef IOTC_USE_LED
-+void set_led_red(bool state){
-+    led_red_state = state;
-+    HAL_GPIO_WritePin( LED_RED_GPIO_Port,   LED_RED_Pin,   (led_red_state)?   GPIO_PIN_RESET : GPIO_PIN_SET );
-+}
-+
-+void set_led_green(bool state){
-+    led_green_state = state;
-+    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, (led_green_state)? GPIO_PIN_RESET : GPIO_PIN_SET);
-+}
-+
-+void set_led_freq(int freq){
-+    led_freq_ms = freq;
-+}
-+#endif // IOTC_USE_LED
-+
-+void iotc_process_cmd_str(IotclEventData data, char* command){
-+    LogInfo("Received command: %s", command);
-+
-+    if(NULL != strcasestr(command, IOTC_CMD_PING)){
-+        LogInfo("Ping Command Received!\n");
-+#ifdef IOTC_USE_LED
-+    } else if(NULL != strcasestr(command, IOTC_CMD_LED_RED)){
-+        if (NULL != strcasestr(command, "on")) {
-+            LogInfo("led-red on");
-+            //BSP_LED_On(LED_RED);
-+            set_led_red(true);
-+        } else if (NULL != strcasestr(command, "off")) {
-+            LogInfo("led-red off");
-+            set_led_red(false);
-+        } else {
-+            LogWarn("Invalid led-red command received: %s", command);
-+        }
-+        command_status(data, true, command, "OK");
-+    } else if(NULL != strcasestr(command, IOTC_CMD_LED_GREEN)) {
-+        if (NULL != strcasestr(command, "on")) {
-+            LogInfo("led-green on");
-+            set_led_green(true);
-+        } else if (NULL != strcasestr(command, "off")) {
-+            LogInfo("led-green off");
-+            set_led_green(false);
-+        } else {
-+            LogWarn("Invalid led-green command received: %s", command);
-+        }
-+        command_status(data, true, command, "OK");
-+    } else if(NULL != strcasestr(command, IOTC_CMD_LED_FREQ)) {
-+        // Get the int following the command
-+        int led_freq = atoi(command + strlen(IOTC_CMD_LED_FREQ) + 1);
-+        if (0 != led_freq){
-+            set_led_freq(led_freq);
-+        }
-+#endif // IOTC_USE_LED
-+    } else {
-+        LogInfo("Command not recognized: %s", command);
-+        command_status(data, false, command, "Not implemented");
-+    }
-+}
- 
- static void vHeartbeatTask( void * pvParameters )
- {
-     ( void ) pvParameters;
- 
--    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET );
--    HAL_GPIO_WritePin( LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET );
-+    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, (led_green_state)? GPIO_PIN_RESET : GPIO_PIN_SET);
-+    HAL_GPIO_WritePin( LED_RED_GPIO_Port,   LED_RED_Pin,   (led_red_state)?   GPIO_PIN_RESET : GPIO_PIN_SET );
- 
-     while(1)
-     {
--        vTaskDelay( pdMS_TO_TICKS( 1000 ) );
--        HAL_GPIO_TogglePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin );
--        HAL_GPIO_TogglePin( LED_RED_GPIO_Port, LED_RED_Pin );
-+        vTaskDelay( pdMS_TO_TICKS( led_freq_ms ) );
-+
-+        if (led_red_state){
-+            HAL_GPIO_TogglePin( LED_RED_GPIO_Port, LED_RED_Pin );
-+        }
-+
-+        if (led_green_state){
-+            HAL_GPIO_TogglePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin );
-+        }
-     }
- }
- 
-@@ -78,6 +153,7 @@
- extern void vDefenderAgentTask( void * );
- extern void vSensorDataPublishTask( void * pvParameters );
- extern void vShadowUpdateTask( void * pvParameters );
-+extern void iotconnect_app( void * );
- #if DEMO_QUALIFICATION_TEST
- extern void run_qualification_main( void * );
- #endif /* DEMO_QUALIFICATION_TEST */
-@@ -113,20 +189,26 @@
-     xResult = xTaskCreate( run_qualification_main, "QualTest", 4096, NULL, 10, NULL );
-     configASSERT( xResult == pdTRUE );
- #else
--    xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
--    configASSERT( xResult == pdTRUE );
-+    // xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
-+    // configASSERT( xResult == pdTRUE );
- 
--    xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 2, NULL );
--    configASSERT( xResult == pdTRUE );
-+    // xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 2, NULL );
-+    // configASSERT( xResult == pdTRUE );
- 
-     xResult = xTaskCreate( vSensorPublishTask, "Sense", 512, NULL, 6, NULL );
-     configASSERT( xResult == pdTRUE );
- 
--    xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
--    configASSERT( xResult == pdTRUE );
-+    // xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
-+    // configASSERT( xResult == pdTRUE );
-+
-+    // xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
-+    // configASSERT( xResult == pdTRUE );
- 
--    xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
-+    LogInfo("IOTC TZ RUNNING!");
-+
-+    xResult = xTaskCreate( iotconnect_app, "iotconnect_app", 4096, NULL, 5, NULL );
-     configASSERT( xResult == pdTRUE );
-+
- #endif /* DEMO_QUALIFICATION_TEST */
- 
-     while( 1 )
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject	2024-05-03 13:36:40.248611791 +0100
+diff --git a/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject b/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject
+index c0c18f5..369a902 100644
+--- a/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject
++++ b/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.cproject
 @@ -33,6 +33,9 @@
  								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols.717150467" name="Define symbols (-D)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.definedsymbols" valueType="definedSymbols">
  									<listOptionValue builtIn="false" value="DEBUG"/>
  								</option>
-+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.558616066" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
++								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.1496602640" name="Include paths (-I)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
 +									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/IoTConnect/iotc-freertos-sdk/smart-inc}&quot;"/>
 +								</option>
  								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.1840306049" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
@@ -1832,25 +1933,27 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
  								</option>
  								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.warnings.missing_include_dirs.1695544786" name="Warn if a user-supplied include directory does not exist (-Wmissing-include-dirs)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.warnings.missing_include_dirs" useByScannerDiscovery="false" value="true" valueType="boolean"/>
  								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data.1473452715" name="Assume loading data from flash is slower than fetching instruction (-mslow-flash-data)" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.option.slow_flash_data" useByScannerDiscovery="false" value="true" valueType="boolean"/>
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project	2024-05-03 13:36:40.248611791 +0100
-@@ -33,6 +33,11 @@
+diff --git a/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project b/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project
+index 1516b0c..c8f8f91 100644
+--- a/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project
++++ b/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/.project
+@@ -32,6 +32,11 @@
+ 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
  	</natures>
  	<linkedResources>
- 		<link>
++		<link>
 +			<name>IoTConnect</name>
 +			<type>2</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/IoTConnect</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>STM32H573I-DK_aws_eth_tz.ioc</name>
  			<type>1</type>
- 			<locationURI>PARENT-1-PROJECT_LOC/STM32H573I-DK_aws_eth_tz.ioc</locationURI>
-@@ -273,6 +278,26 @@
+@@ -272,6 +277,26 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Utilities/Certificates/stm32_cert.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/littlefs/lfs.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/littlefs/lfs.c</locationURI>
@@ -1870,14 +1973,14 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/littlefs/lfs_util.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/aes.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/aes.c</locationURI>
-@@ -308,6 +333,16 @@
+@@ -307,6 +332,16 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/ccm.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/chacha20.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chacha20.c</locationURI>
@@ -1887,48 +1990,48 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/chachapoly.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/cipher.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/cipher.c</locationURI>
-@@ -338,6 +373,11 @@
+@@ -337,6 +372,11 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/debug.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/des.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/des.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/dhm.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/dhm.c</locationURI>
-@@ -398,11 +438,21 @@
+@@ -397,11 +437,21 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/md5.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/md5.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/memory_buffer_alloc.c</name>
  			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/memory_buffer_alloc.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/nist_kw.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/nist_kw.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/oid.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/oid.c</locationURI>
-@@ -428,6 +478,16 @@
+@@ -427,6 +477,16 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pk_wrap.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/pkcs12.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs12.c</locationURI>
@@ -1938,86 +2041,177 @@ diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM3
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkcs5.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/pkparse.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/pkparse.c</locationURI>
-@@ -448,6 +508,11 @@
+@@ -447,6 +507,11 @@
+ 			<type>1</type>
  			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/platform_util.c</locationURI>
  		</link>
- 		<link>
++		<link>
 +			<name>Middlewares/ARM/mbedtls/poly1305.c</name>
 +			<type>1</type>
 +			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/poly1305.c</locationURI>
 +		</link>
-+		<link>
+ 		<link>
  			<name>Middlewares/ARM/mbedtls/rsa.c</name>
  			<type>1</type>
- 			<locationURI>PARENT-4-PROJECT_LOC/Middleware/ARM/mbedtls/library/rsa.c</locationURI>
-diff --unified --recursive --no-dereference -X excluded-file-extensions.txt STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/STM32H573I-DK_aws_eth_tz.launch iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/STM32H573I-DK_aws_eth_tz.launch
---- STM32CubeExpansion_Cloud_AWS_H5_V1.0.0/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/STM32H573I-DK_aws_eth_tz.launch	2023-08-11 10:29:12.000000000 +0100
-+++ iotc-freertos-stm32-h5-nogit/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/STM32H573I-DK_aws_eth_tz.launch	2024-05-03 13:36:40.248611791 +0100
-@@ -12,7 +12,7 @@
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.ip_address_local" value="localhost"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.enabled" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.limit_swo_clock.value" value=""/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.loadList" value="{&quot;fItems&quot;:[{&quot;fIsFromMainTab&quot;:true,&quot;fPath&quot;:&quot;Debug/STM32H573I-DK_aws_eth_tz.elf&quot;,&quot;fProjectName&quot;:&quot;STM32H573I-DK_aws_eth_tz&quot;,&quot;fPerformBuild&quot;:true,&quot;fDownload&quot;:false,&quot;fLoadSymbols&quot;:true}]}"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.loadList" value="{&quot;fItems&quot;:[{&quot;fIsFromMainTab&quot;:true,&quot;fPath&quot;:&quot;Debug/STM32H573I-DK_aws_eth_tz.elf&quot;,&quot;fProjectName&quot;:&quot;STM32H573I-DK_aws_eth_tz&quot;,&quot;fPerformBuild&quot;:true,&quot;fDownload&quot;:true,&quot;fLoadSymbols&quot;:true}]}"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.override_start_address_mode" value="default"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.remoteCommand" value="target remote"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.startServer" value="true"/>
-@@ -24,7 +24,7 @@
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.swv_trace_hclk" value="250000000"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.useRemoteTarget" value="true"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.launch.vector_table" value=""/>
--    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.verify_flash_download" value="false"/>
-+    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.launch.verify_flash_download" value="true"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.cti_allow_halt" value="false"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.cti_signal_halt" value="false"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.enable_logging" value="false"/>
-@@ -32,20 +32,20 @@
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.enable_shared_stlink" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.frequency" value="0"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.halt_all_on_reset" value="false"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="S:\Projects\STM32H573I-DK\aws_eth_tz\STM32CubeIDE\Debug\st-link_gdbserver_log.txt"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.log_file" value="/home/ylin/work/IoT/x-cube-aws-h5/Projects/STM32H573I-DK/aws_eth_tz/STM32CubeIDE/Debug/st-link_gdbserver_log.txt"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.low_power_debug" value="enable"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.max_halt_delay" value="2"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.reset_strategy" value="no_reset"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.reset_strategy" value="system_reset"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.stlink_check_serial_number" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.stlink_txt_serial_number" value=""/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlink.watchdog_config" value="none"/>
--    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkenable_rtos" value="true"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkrestart_configurations" value="{&quot;fVersion&quot;:1,&quot;fItems&quot;:[{&quot;fDisplayName&quot;:&quot;Reset&quot;,&quot;fIsSuppressible&quot;:false,&quot;fResetAttribute&quot;:&quot;Software system reset&quot;,&quot;fResetStrategies&quot;:[{&quot;fDisplayName&quot;:&quot;Software system reset&quot;,&quot;fLaunchAttribute&quot;:&quot;system_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Hardware reset&quot;,&quot;fLaunchAttribute&quot;:&quot;hardware_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset hardware\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Core reset&quot;,&quot;fLaunchAttribute&quot;:&quot;core_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset core\r\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;None&quot;,&quot;fLaunchAttribute&quot;:&quot;no_reset&quot;,&quot;fGdbCommands&quot;:[],&quot;fCmdOptions&quot;:[&quot;-g&quot;]}],&quot;fGdbCommandGroup&quot;:{&quot;name&quot;:&quot;Additional commands&quot;,&quot;commands&quot;:[]},&quot;fStartApplication&quot;:true}]}"/>
--    <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.enableRtosProxy" value="true"/>
-+    <booleanAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkenable_rtos" value="false"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.debug.stlinkrestart_configurations" value="{&quot;fVersion&quot;:1,&quot;fItems&quot;:[{&quot;fDisplayName&quot;:&quot;Reset&quot;,&quot;fIsSuppressible&quot;:false,&quot;fResetAttribute&quot;:&quot;Software system reset&quot;,&quot;fResetStrategies&quot;:[{&quot;fDisplayName&quot;:&quot;Software system reset&quot;,&quot;fLaunchAttribute&quot;:&quot;system_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Hardware reset&quot;,&quot;fLaunchAttribute&quot;:&quot;hardware_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset hardware\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;Core reset&quot;,&quot;fLaunchAttribute&quot;:&quot;core_reset&quot;,&quot;fGdbCommands&quot;:[&quot;monitor reset core\n&quot;],&quot;fCmdOptions&quot;:[&quot;-g&quot;]},{&quot;fDisplayName&quot;:&quot;None&quot;,&quot;fLaunchAttribute&quot;:&quot;no_reset&quot;,&quot;fGdbCommands&quot;:[],&quot;fCmdOptions&quot;:[&quot;-g&quot;]}],&quot;fGdbCommandGroup&quot;:{&quot;name&quot;:&quot;Additional commands&quot;,&quot;commands&quot;:[]},&quot;fStartApplication&quot;:true}]}"/>
-+    <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.enableRtosProxy" value="false"/>
-     <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyCustomProperties" value=""/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriver" value="freertos"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriver" value="threadx"/>
-     <booleanAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverAuto" value="false"/>
--    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverPort" value="ARM_CM33_NTZ"/>
-+    <stringAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyDriverPort" value="cortex_m0"/>
-     <intAttribute key="com.st.stm32cube.ide.mcu.rtosproxy.rtosProxyPort" value="60000"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="false"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
-@@ -54,7 +54,7 @@
-     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.jtagDeviceId" value="com.st.stm32cube.ide.mcu.debug.stlink"/>
-     <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.pcRegister" value=""/>
-     <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.portNumber" value="61234"/>
--    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value="set breakpoint always-inserted on&#13;&#10;tbreak Reset_Handler&#13;&#10;monitor reset&#13;&#10;set breakpoint always-inserted off&#13;&#10;si"/>
-+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value=""/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setPcRegister" value="false"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="true"/>
-     <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
-@@ -62,7 +62,7 @@
-     <stringAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_NAME" value="arm-none-eabi-gdb"/>
-     <booleanAttribute key="org.eclipse.cdt.dsf.gdb.NON_STOP" value="false"/>
-     <booleanAttribute key="org.eclipse.cdt.dsf.gdb.UPDATE_THREADLIST_ON_SUSPEND" value="false"/>
--    <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="0"/>
-+    <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
-     <stringAttribute key="org.eclipse.cdt.launch.COREFILE_PATH" value=""/>
-     <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="remote"/>
-     <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+diff --git a/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c b/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c
+index 9a33d30..36e273e 100644
+--- a/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c
++++ b/Projects/STM32H573I-DK/aws_eth_tz/Src/app_main.c
+@@ -37,10 +37,14 @@
+ #include "psa/crypto.h"
+ 
+ #include "cli.h"
++#include "lfs.h"
++#include "lfs_port.h"
+ #include "test_execution_config.h"
+ #include "semphr.h"
+ #include "stdlib.h" /* rand() */
+ 
++#include "iotconnect_app.h"
++
+ /* Definition for Qualification Test */
+ #if ( DEVICE_ADVISOR_TEST_ENABLED == 1 ) || ( MQTT_TEST_ENABLED == 1 ) || ( TRANSPORT_INTERFACE_TEST_ENABLED == 1 ) || \
+     ( OTA_PAL_TEST_ENABLED == 1 ) || ( OTA_E2E_TEST_ENABLED == 1 ) || ( CORE_PKCS11_TEST_ENABLED == 1 )
+@@ -53,20 +57,92 @@
+ 
+ #define SRAM3_NS_SIZE (128 * 1024)
+ 
++#ifdef IOTC_USE_LED
++volatile bool led_red_state   = true;
++volatile bool led_green_state = true;
++volatile int  led_freq_ms     = 1000;
++#endif
++
++static lfs_t * pxLfsCtx = NULL;
++
+ EventGroupHandle_t xSystemEvents = NULL;
++#ifdef IOTC_USE_LED
++void set_led_red(bool state){
++    led_red_state = state;
++    HAL_GPIO_WritePin( LED_RED_GPIO_Port,   LED_RED_Pin,   (led_red_state)?   GPIO_PIN_RESET : GPIO_PIN_SET );
++}
++
++void set_led_green(bool state){
++    led_green_state = state;
++    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, (led_green_state)? GPIO_PIN_RESET : GPIO_PIN_SET);
++}
++
++void set_led_freq(int freq){
++    led_freq_ms = freq;
++}
++#endif // IOTC_USE_LED
++
++int iotc_process_cmd_str(IotclC2dEventData data, char* command){
++    int err=-1;
++    LogInfo("Received command: %s", command);
++
++    if(NULL != strcasestr(command, IOTC_CMD_PING)){
++        LogInfo("Ping Command Received!\n");
++#ifdef IOTC_USE_LED
++    } else if(NULL != strcasestr(command, IOTC_CMD_LED_RED)){
++        if (NULL != strcasestr(command, "on")) {
++            LogInfo("led-red on");
++            //BSP_LED_On(LED_RED);
++            set_led_red(true);
++        } else if (NULL != strcasestr(command, "off")) {
++            LogInfo("led-red off");
++            set_led_red(false);
++        } else {
++            LogWarn("Invalid led-red command received: %s", command);
++        }
++        err=0;
++    } else if(NULL != strcasestr(command, IOTC_CMD_LED_GREEN)) {
++        if (NULL != strcasestr(command, "on")) {
++            LogInfo("led-green on");
++            set_led_green(true);
++        } else if (NULL != strcasestr(command, "off")) {
++            LogInfo("led-green off");
++            set_led_green(false);
++        } else {
++            LogWarn("Invalid led-green command received: %s", command);
++        }
++        err=0;
++    } else if(NULL != strcasestr(command, IOTC_CMD_LED_FREQ)) {
++        // Get the int following the command
++        int led_freq = atoi(command + strlen(IOTC_CMD_LED_FREQ) + 1);
++        if (0 != led_freq){
++            set_led_freq(led_freq);
++        }
++#endif // IOTC_USE_LED
++    } else {
++        LogInfo("Command not recognized: %s", command);
++    }
++    return err;
++}
+ 
+ static void vHeartbeatTask( void * pvParameters )
+ {
+     ( void ) pvParameters;
+ 
+-    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET );
+-    HAL_GPIO_WritePin( LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET );
++    HAL_GPIO_WritePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin, (led_green_state)? GPIO_PIN_RESET : GPIO_PIN_SET);
++    HAL_GPIO_WritePin( LED_RED_GPIO_Port,   LED_RED_Pin,   (led_red_state)?   GPIO_PIN_RESET : GPIO_PIN_SET );
+ 
+     while(1)
+     {
+-        vTaskDelay( pdMS_TO_TICKS( 1000 ) );
+-        HAL_GPIO_TogglePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin );
+-        HAL_GPIO_TogglePin( LED_RED_GPIO_Port, LED_RED_Pin );
++        vTaskDelay( pdMS_TO_TICKS( led_freq_ms ) );
++
++        if (led_red_state){
++            HAL_GPIO_TogglePin( LED_RED_GPIO_Port, LED_RED_Pin );
++        }
++
++        if (led_green_state){
++            HAL_GPIO_TogglePin( LED_GREEN_GPIO_Port, LED_GREEN_Pin );
++        }
+     }
+ }
+ 
+@@ -78,6 +154,7 @@ extern void vOTAUpdateTask( void * pvParam );
+ extern void vDefenderAgentTask( void * );
+ extern void vSensorDataPublishTask( void * pvParameters );
+ extern void vShadowUpdateTask( void * pvParameters );
++extern void iotconnect_app( void * );
+ #if DEMO_QUALIFICATION_TEST
+ extern void run_qualification_main( void * );
+ #endif /* DEMO_QUALIFICATION_TEST */
+@@ -113,20 +190,26 @@ void vInitTask( void * pvArgs )
+     xResult = xTaskCreate( run_qualification_main, "QualTest", 4096, NULL, 10, NULL );
+     configASSERT( xResult == pdTRUE );
+ #else
+-    xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
+-    configASSERT( xResult == pdTRUE );
++    // xResult = xTaskCreate( vMQTTAgentTask, "MQTTAgent", 1024, NULL, 10, NULL );
++    // configASSERT( xResult == pdTRUE );
+ 
+-    xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 2, NULL );
+-    configASSERT( xResult == pdTRUE );
++    // xResult = xTaskCreate( vOTAUpdateTask, "OTAUpdate", 512, NULL, tskIDLE_PRIORITY + 2, NULL );
++    // configASSERT( xResult == pdTRUE );
+ 
+     xResult = xTaskCreate( vSensorPublishTask, "Sense", 512, NULL, 6, NULL );
+     configASSERT( xResult == pdTRUE );
+ 
+-    xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
+-    configASSERT( xResult == pdTRUE );
++    // xResult = xTaskCreate( vShadowDeviceTask, "ShadowDevice", 512, NULL, 5, NULL );
++    // configASSERT( xResult == pdTRUE );
++
++    // xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
++    // configASSERT( xResult == pdTRUE );
+ 
+-    xResult = xTaskCreate( vDefenderAgentTask, "AWSDefender", 512 , NULL, 5, NULL );
++    LogInfo("IOTC TZ RUNNING!");
++
++    xResult = xTaskCreate( iotconnect_app, "iotconnect_app", 4096, NULL, 5, NULL );
+     configASSERT( xResult == pdTRUE );
++
+ #endif /* DEMO_QUALIFICATION_TEST */
+ 
+     while( 1 )
