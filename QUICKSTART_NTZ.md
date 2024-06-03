@@ -16,12 +16,9 @@ This document provides a step-by-step-guide to program and evaluate the
 
 ## 4. Configure the Serial Terminal  
 * Open TeraTerm and configure the settings as shown in the screenshot below:
-![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")
+![Tera Term Serial Settings](media/teraterm_settings.png)
 * Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.
-* Enter the following command to ensure the serial port is functioning:
-```
-help
-```
+* Enter `help` into the serial terminal and ensure there is a response.
 
 ## 5. Setup an IoTConnect Cloud Account
 This guide requires an IoTConnect account on AWS.
@@ -36,29 +33,31 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
-## 6. Device Setup  
-### 6.1 Flash Firmware  
+## 6. Obtain CPID and ENV
+
+## 7. Device Setup  
+### 7.1 Flash Firmware  
 
 * Extract the firmware downloaded earlier and take note of the location
 * Launch the STM32CubeProgrammer
-* In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:
-[pic]
+* In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:  
+![st-link-selection](media/st-link-selection.png)  
 * Click **Connect** next to this drop-down
 * Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"
 * Click **Browse** and select the firmware file extracted previously
-* Click **Start Programming**
-[pic]  
+* Click **Start Programming**  
+![H5 Programming](media/h5-programming.png)  
 
 * Once the flashing is reported as complete, click the  "Disconnect" button in the top-right corner.  
 * Press the black reset button next to the blue button to reset the board.  
 
-### 6.2 Configure Device Name  
+### 7.2 Configure Device
+Once the board has reset, switch back to the serial terminal to configure the device.  
 Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
 ```
 conf set thing_name device_name
 ```
 
-### 6.3 Configure IoTConnect CPID and Env  
 Replace "cpid_string" with the actual CPID variable in the following command and enter into the terminal.  
 ```
 conf set cpid cpid_string
@@ -69,36 +68,57 @@ Replace "env_string" with the actual ENV variable in the following command and e
 conf set env env_string
 ```
 
-### 6.4 Commit Configuration Changes  
 Commit the staged configuration changes to non-volatile memory.  
 ```
 conf commit
 ```
 
-### 6.5 Import the AWS Root CA Certificate  
 Issue the following command to import the AWS Root CA:  
 ```
 pki import cert root_ca_cert
 ```
 
-* Copy/Paste the contents of ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) with the "BEGIN" and "END" lines into the terminal and press `Enter`.
-Note:  This Root CA Certificate which has signed all four available Amazon Trust Services Root CA certificates.
+Paste the contents of this signed AWS Root CA Certificate ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) into the terminal and hit `Enter`.  
+```
+-----BEGIN CERTIFICATE-----
+MIID7zCCAtegAwIBAgIBADANBgkqhkiG9w0BAQsFADCBmDELMAkGA1UEBhMCVVMx
+EDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxJTAjBgNVBAoT
+HFN0YXJmaWVsZCBUZWNobm9sb2dpZXMsIEluYy4xOzA5BgNVBAMTMlN0YXJmaWVs
+ZCBTZXJ2aWNlcyBSb290IENlcnRpZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTA5
+MDkwMTAwMDAwMFoXDTM3MTIzMTIzNTk1OVowgZgxCzAJBgNVBAYTAlVTMRAwDgYD
+VQQIEwdBcml6b25hMRMwEQYDVQQHEwpTY290dHNkYWxlMSUwIwYDVQQKExxTdGFy
+ZmllbGQgVGVjaG5vbG9naWVzLCBJbmMuMTswOQYDVQQDEzJTdGFyZmllbGQgU2Vy
+dmljZXMgUm9vdCBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkgLSBHMjCCASIwDQYJKoZI
+hvcNAQEBBQADggEPADCCAQoCggEBANUMOsQq+U7i9b4Zl1+OiFOxHz/Lz58gE20p
+OsgPfTz3a3Y4Y9k2YKibXlwAgLIvWX/2h/klQ4bnaRtSmpDhcePYLQ1Ob/bISdm2
+8xpWriu2dBTrz/sm4xq6HZYuajtYlIlHVv8loJNwU4PahHQUw2eeBGg6345AWh1K
+Ts9DkTvnVtYAcMtS7nt9rjrnvDH5RfbCYM8TWQIrgMw0R9+53pBlbQLPLJGmpufe
+hRhJfGZOozptqbXuNC66DQO4M99H67FrjSXZm86B0UVGMpZwh94CDklDhbZsc7tk
+6mFBrMnUVN+HL8cisibMn1lUaJ/8viovxFUcdUBgF4UCVTmLfwUCAwEAAaNCMEAw
+DwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYEFJxfAN+q
+AdcwKziIorhtSpzyEZGDMA0GCSqGSIb3DQEBCwUAA4IBAQBLNqaEd2ndOxmfZyMI
+bw5hyf2E3F/YNoHN2BtBLZ9g3ccaaNnRbobhiCPPE95Dz+I0swSdHynVv/heyNXB
+ve6SbzJ08pGCL72CQnqtKrcgfU28elUSwhXqvfdqlS5sdJ/PHLTyxQGjhdByPq1z
+qwubdQxtRbeOlKyWN7Wg0I8VRw7j6IPdj/3vQQF3zCepYoUz8jcI73HPdwbeyBkd
+iEDPfUYd/x7H4c7/I9vG+o1VTqkC50cRRj70/b17KSa7qWFiNyi2LSr2EIZkyXCn
+0q23KXB56jzaYyWf/Wi3MOxw+3WKt21gZ7IeyLnp2KhvAotnDU0mV3HaIPzBSlCN
+sSi6
+-----END CERTIFICATE-----
+```
 
-### 6.6 Generate a Private Key 
 Use the following command to generate a local Private Key:  
 ```
 pki generate key
 ```
 
-### 6.7 Generate a Self-Signed Certificate  
 Use the following command to generate a Self-Signed Certificate:  
 ```
 pki generate cert
 ```
 
-* Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
+Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
 
-## 6. Configure IoTConnect  
+## 8. Configure IoTConnect  
 1. Upload the certificate that you saved from the terminal, devicecert.pem at https://awspoc.iotconnect.io/certificate (CA Certificate Individual)
 2. Create a template using **CA certificate Individual** as "Auth Type".
 3. Create a device and select the certicate that you uploaded in "Certificate Authority" and upload the same certificate again in "Device Certificate".
