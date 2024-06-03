@@ -5,7 +5,7 @@ This document provides a step-by-step-guide to program and evaluate the
 [STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
 
 ## 2. Required Software  
-* Download the pre-built firmware image from: TBD
+* Download the pre-built firmware image: [freertos_h5_aws_eth.zip](https://saleshosted.z13.web.core.windows.net/demo/st/freertos_h5_aws_eth.zip)
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
 * A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/).
 
