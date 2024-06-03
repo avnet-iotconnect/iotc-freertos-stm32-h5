@@ -1,0 +1,31 @@
+{
+    "code": "stm32h5ntz",
+    "name": "STM32H5ntz",
+    "authType": 2,
+    "attributes": [
+        {
+            "name": "timer",
+            "type": "DECIMAL"
+        },
+        {
+            "name": "sent",
+            "type": "DECIMAL"
+        },
+        {
+            "name": "received",
+            "type": "DECIMAL"
+        }
+    ],
+    "messageVersion": "2.1",
+    "msgCode": "XG4E3UL",
+    "greenGrass": "0",
+    "wireless": "0",
+    "properties": {
+        "description": null,
+        "dataFrequency": "5",
+        "fileSupport": false
+    },
+    "_meta": {
+        "version": "2.0"
+    }
+}
