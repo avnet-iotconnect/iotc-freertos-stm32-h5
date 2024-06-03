@@ -1,9 +1,9 @@
-# IoT-Connect STM H5 IOT02 dev kit board demo for AWS
+# QuickStart STM32H5 on IoTConnect
 
 ## Introduction
 
 This document provides a step-by-step-guide to program and evaluate the 
-[B-U585I-IOT02A STM32U5 Discovery kit for IoT](https://www.st.com/en/evaluation-tools/b-u585i-iot02a.html) board 
+[STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) board 
 on IoTConnect.
 
 
@@ -11,7 +11,7 @@ on IoTConnect.
 
 * Download the pre-built firmware image from: TBD
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
-* A serial console application, such as [Tera Term](https://ttssh2.osdn.jp/index.html.en) or Minicom on Linux 
+* A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/). 
  
 
 ### Configure Your Board
@@ -23,8 +23,6 @@ are configured as seen in the screenshot below:
 
 ![Tera Term Serial Settings](media/teraterm-settings.png "Tera Term Serial Settings")
 
-On Linux this device may appear as /dev/ttyACM0 or /dev/ttyACM1.
-
 You will now have access to the command line interface to the device,
 enter the command "help" to check that the serial port is functioning.
 
@@ -33,28 +31,24 @@ enter the command "help" to check that the serial port is functioning.
 This guide requires an IoTConnect account on AWS.
 
 >**NOTE:**  
-> If you have already created an IoTConnect account on AWS, or were provided an account as part of a training or workshop, skip this section.
+> If you have already created an IoTConnect account on AWS you may skip this section.
 
-If you need to create an account, a free 2-month subscription is available.
+If you need to create an account, a free trial subscription is available.
 Please follow the 
 [Creating a New IoTConnect Account](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/subscription.md)
 guide and ensure to select the [AWS version](https://subscription.iotconnect.io/subscribe?cloud=aws) during registration:
 
-![IoTConnect on Azure](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
+![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
 ## Device Setup
 
 ### Flash firmware image onto dev kit board.
 
-Open the STM32CubeProgrammer and plug the U5 board into a a laptop or PC with a
-USB cable.  The board should automatically be detected.
-
-Extract the archive containing the firmware images from files.witekio.com, the
-images are in several formats.
+* Connect an Ethernet cable to the board and to your network.
+* Open the STM32CubeProgrammer and connect board to a PC with a USB cable. Ensure you use the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
 
 In STM32CubeProgrammer click the Open File tab or "+" tab at the top of the
-window.  In the open file dialog select either of the b_u585i_iot02a_ntz.elf or
-b_u585i_io02a_ntz.hex files and click "Open" to load the file.
+window.
 
 Towards the top-right of the STM32CubeProgrammer window is a blue "Download" button,
 click on this to download the image to the developer kit board.  The red LED
