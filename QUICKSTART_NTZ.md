@@ -3,8 +3,7 @@
 ## Introduction
 
 This document provides a step-by-step-guide to program and evaluate the 
-[STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) board 
-on IoTConnect.
+[STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
 
 
 ## Required Software
