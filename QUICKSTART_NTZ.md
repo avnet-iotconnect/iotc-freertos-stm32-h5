@@ -14,7 +14,7 @@ This document provides a step-by-step-guide to program and evaluate the
 * Connect a USB cable from your PC to the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
 ![H5 STLINK PORT](media/H5_STLINK_PORT.png)  
 
-## 3. Configure the Serial Terminal  
+## 4. Configure the Serial Terminal  
 * Open TeraTerm and configure the settings as shown in the screenshot below:  
 ![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")  
 * Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.   
@@ -23,7 +23,7 @@ This document provides a step-by-step-guide to program and evaluate the
 help
 ```
 
-## 4. Setup an IoTConnect Cloud Account
+## 5. Setup an IoTConnect Cloud Account
 This guide requires an IoTConnect account on AWS.
 
 >**NOTE:**  
@@ -36,77 +36,69 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
-## 5. Device Setup  
-### 5.1 Flash Firmware  
+## 6. Device Setup  
+### 6.1 Flash Firmware  
 
-* Launch the STM32CubeProgrammer
+* Extract the firmware downloaded earlier and take note of the location
+* Launch the STM32CubeProgrammer  
+* In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:  
+[pic]  
+* Click **Connect** next to this drop-down  
+* Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"  
+* Click **Browse** and select the firmware file extracted previously  
+* Click **Start Programming**  
+[pic]  
 
-In STM32CubeProgrammer click the Open File tab or "+" tab at the top of the
-window.
+* Once the flashing is reported as complete, click the  "Disconnect" button in the top-right corner.  
+* Press the black reset button next to the blue button to reset the board.  
 
-Towards the top-right of the STM32CubeProgrammer window is a blue "Download" button, click on this to download the image to the developer kit board. The red LED next to the USB socket will flash during the download.
-
-Once the download is reported as complete, click the green "Disconnect" button in the top-right corner of STM32CubeProgrammer.
-
-Press the black reset button next to the blue button to reset the board.
-
-
-### 5.2 Configure Device Name
-
-Copy the following command, paste it in the terminal, replace "[device name]" with a name of your choice and hit `Enter`.
-
+### 6.2 Configure Device Name  
+Copy the following command, paste it in the terminal, replace "[device name]" with a name of your choice and hit `Enter`.  
 ```
 conf set thing_name [device name]
 ```
 
-#### 5.3 Configure IoTConnect CPID and Env
-
-
-
+### 6.3 Configure IoTConnect CPID and Env  
 Replace "cpid_string" with the actual CPID in the following command and enter into the terminal.  
 ```
 conf set cpid cpid_string
 ```
 
-Replace "env_string" with the actual CPID in the following command and enter into the terminal. 
+Replace "env_string" with the actual CPID in the following command and enter into the terminal.  
 ```
 conf set env env_string
 ```
 
-### 5.4 Commit Configuration Changes
-Commit the staged configuration changes to non-volatile memory.
-
+### 6.4 Commit Configuration Changes  
+Commit the staged configuration changes to non-volatile memory.  
 ```
 conf commit
 ```
 
-### 5.5 Import the AWS Root CA Certificate
-
+### 6.5 Import the AWS Root CA Certificate  
 Issue the following command to import the AWS Root CA:  
 ```
 pki import cert root_ca_cert
 ```
 
-Next, Copy/Paste the contents of ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) with the "BEGIN" and "END" lines into the terminal and press `Enter`.
+* Copy/Paste the contents of ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) with the "BEGIN" and "END" lines into the terminal and press `Enter`.
 Note:  This Root CA Certificate which has signed all four available Amazon Trust Services Root CA certificates.
 
-### 5.6 Generate a Private Key
-
+### 6.6 Generate a Private Key 
 Use the following command to generate a local Private Key:  
 ```
 pki generate key
 ```
 
-### 5.7 Generate a Self-Signed Certificate
+### 6.7 Generate a Self-Signed Certificate  
 Use the following command to generate a Self-Signed Certificate:  
 ```
 pki generate cert
 ```
 
-* Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.
+* Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
 
-## 6. Configure IoTConnect
-
+## 6. Configure IoTConnect  
 1. Upload the certificate that you saved from the terminal, devicecert.pem at https://awspoc.iotconnect.io/certificate (CA Certificate Individual)
 2. Create a template using **CA certificate Individual** as "Auth Type".
 3. Create a device and select the certicate that you uploaded in "Certificate Authority" and upload the same certificate again in "Device Certificate".
