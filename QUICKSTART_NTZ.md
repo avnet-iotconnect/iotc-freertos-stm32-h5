@@ -41,13 +41,12 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ## 7. Device Setup  
 ### 7.1 Flash Firmware  
 
-* Extract the firmware downloaded earlier and take note of the location
 * Launch the STM32CubeProgrammer
 * In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:  
 ![st-link-selection](media/st-link-selection.png)  
 * Click **Connect** next to this drop-down
 * Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"
-* Click **Browse** and select the firmware file extracted previously
+* Click **Browse** and select the firmware file downloaded earlier
 * Click **Start Programming**  
 ![H5 Programming](media/h5-programming.png)  
 
