@@ -34,6 +34,9 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
 ## 6. Obtain CPID and ENV
+* Log in to your IoTConnec Account here:  [IoTConnect on AWS](https://console.iotconnect.io)  
+* Click the Settings Icon, then click "Key Vault" and copy both the CPID and ENV for later use:
+
 
 ## 7. Device Setup  
 ### 7.1 Flash Firmware  
