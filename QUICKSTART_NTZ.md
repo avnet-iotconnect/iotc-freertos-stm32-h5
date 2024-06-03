@@ -5,13 +5,13 @@ This document provides a step-by-step-guide to program and evaluate the
 [STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
 
 ## 2. Required Software  
-* Download the pre-built firmware image: [freertos_h5_aws_eth.zip](https://saleshosted.z13.web.core.windows.net/demo/st/freertos_h5_aws_eth.zip)
+* Download the pre-built firmware image: [freertos_STM32H573I-DK_aws_eth.bin](https://saleshosted.z13.web.core.windows.net/demo/st/freertos_STM32H573I-DK_aws_eth.bin)
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
 * A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/).
 
 ## 3. Setup Hardware  
 * Connect an Ethernet cable to the board and to a local network.
-* Connect a USB cable from your PC to the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
+* Connect a USB cable from your PC to the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.  
 ![H5 STLINK PORT](media/H5_STLINK_PORT.png)  
 
 ## 4. Configure the Serial Terminal  
