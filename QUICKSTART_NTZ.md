@@ -34,9 +34,9 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
 ## 6. Obtain CPID and ENV
-* Log in to your IoTConnec Account here:  [IoTConnect on AWS](https://console.iotconnect.io)  
+* Log in to your IoTConnect on AWS Account here:  [https://console.iotconnect.io](https://console.iotconnect.io)  
 * Click the Settings Icon, then click "Key Vault" and copy both the CPID and ENV for later use:
-
+![cpid_and_env](media/cpid_and_env.png)  
 
 ## 7. Device Setup  
 ### 7.1 Flash Firmware  
@@ -57,6 +57,7 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ### 7.2 Configure Device
 Once the board has reset, switch back to the serial terminal to configure the device.  
 Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
+**Save** this device name as it will be used later.
 ```
 conf set thing_name device_name
 ```
@@ -122,29 +123,23 @@ pki generate cert
 Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
 
 ## 8. Configure IoTConnect  
-1. Upload the certificate that you saved from the terminal, devicecert.pem at https://awspoc.iotconnect.io/certificate (CA Certificate Individual)
-2. Create a template using **CA certificate Individual** as "Auth Type".
-3. Create a device and select the certicate that you uploaded in "Certificate Authority" and upload the same certificate again in "Device Certificate".
+Return to the IoTConnect web portal and complete the following steps:
 
+### 8.1 Create IoTConnect Device Template  
+A Device Template with Self Signed authentication type will need to be imported.
+* Download the premade [Device Template with Self-Signed Auth]().
+* Import the template into your IoTConnect instance. (A guide on [Importing a Device Template](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/import_device_template.md) is available or for more information on [Template Management](https://docs.iotconnect.io/iotconnect/user-manuals/devices/template-management/), please see the [IoTConnect Documentation](https://iotconnect.io) website.)
 
-In the template add attributes for the following, setting their types as integers:
+### 8.2 Create IoTConnect Device
+* Create a new device in the IoTConnect portal. (Follow the [Create a New Device](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/create_new_device.md) guide for a detailed walkthrough.)
+* Enter the "device name" you selected earlier in the *Unique ID* field and enter a descriptive *Display Name* of your choice.
+* Select the Entity drop-down and pick the entity displayed.
+* Select the template from the dropdown box that was just imported.
+* Under "Device certificate" click "Use my certificate"
+* Click "Browse" and select the devicecert.pem file you saved previously.
+* Click **Save & View** and press the black Reset button on the board.
 
-## 7. Reset the target device
-
-* Reset the device and it shall automatically connect to the AWS MQTT broker based on the configuration set previously. 
-
-* After several seconds the following lines should appear in the terminal:  
-
-```
-<INF>     9574 [MQTTAgent ] Network connection 0x20025538: TLS handshake successful. (mbedtls_transport.c:1367)
-<INF>     9574 [MQTTAgent ] Network connection 0x20025538: Connection to xxxxxxxx-ats.iot.us-east-1.amazonaws.com:8883 established. (mbedtls_transport.c:1374)
-<INF>     9864 [MQTTAgent ] Starting a clean MQTT Session. (mqtt_agent_task.c:1169)
-<INF>    10732 [lwIP      ] Time set to: 2023-10-09T11:56:59.000Z! (time.c:68)
-<INF>    10839 [sntp      ] Time received from NTP. Time now: 2023-10-09T11:56:59.000Z! (time.c:100)
-```
-
-## 8. Verification
-
-At this point the board should be sending telemetry to the IoTConnect platform.
+## 9. Verification  
+After about a minute the board will be sending telemetry to the IoTConnect platform.  
 * To verify, return to the *Devices* page and click on the newly created Device ID.
 * On the left sub-menu, click *Live Data* and after a few seconds, MQTT data should be shown. 
