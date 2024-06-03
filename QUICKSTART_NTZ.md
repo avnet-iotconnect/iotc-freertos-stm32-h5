@@ -12,7 +12,7 @@ This document provides a step-by-step-guide to program and evaluate the
 ## 3. Setup Hardware  
 * Connect an Ethernet cable to the board and to a local network.
 * Connect a USB cable from your PC to the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
-[Image here]
+![H5 STLINK PORT](media/H5_STLINK_PORT.png)  
 
 ## 3. Configure the Serial Terminal  
 * Open TeraTerm and configure the settings as shown in the screenshot below:  
