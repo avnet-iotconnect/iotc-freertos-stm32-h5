@@ -42,7 +42,7 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 * Extract the firmware downloaded earlier and take note of the location
 * Launch the STM32CubeProgrammer
 * In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:
-[pic]  
+[pic]
 * Click **Connect** next to this drop-down
 * Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"
 * Click **Browse** and select the firmware file extracted previously
@@ -53,18 +53,18 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 * Press the black reset button next to the blue button to reset the board.  
 
 ### 6.2 Configure Device Name  
-Copy the following command, paste it in the terminal, replace "[device name]" with a name of your choice and hit `Enter`.  
+Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
 ```
-conf set thing_name [device name]
+conf set thing_name device_name
 ```
 
 ### 6.3 Configure IoTConnect CPID and Env  
-Replace "cpid_string" with the actual CPID in the following command and enter into the terminal.  
+Replace "cpid_string" with the actual CPID variable in the following command and enter into the terminal.  
 ```
 conf set cpid cpid_string
 ```
 
-Replace "env_string" with the actual CPID in the following command and enter into the terminal.  
+Replace "env_string" with the actual ENV variable in the following command and enter into the terminal.  
 ```
 conf set env env_string
 ```
