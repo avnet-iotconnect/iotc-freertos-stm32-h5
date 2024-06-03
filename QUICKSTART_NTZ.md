@@ -127,7 +127,7 @@ Return to the IoTConnect web portal and complete the following steps:
 
 ### 8.1 Create IoTConnect Device Template  
 A Device Template with Self Signed authentication type will need to be imported.
-* Download the premade [Device Template with Self-Signed Auth]().
+* Download the premade [Device Template with Self-Signed Auth](templates/STM32H5ntz_device_template.JSON).
 * Import the template into your IoTConnect instance. (A guide on [Importing a Device Template](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/import_device_template.md) is available or for more information on [Template Management](https://docs.iotconnect.io/iotconnect/user-manuals/devices/template-management/), please see the [IoTConnect Documentation](https://iotconnect.io) website.)
 
 ### 8.2 Create IoTConnect Device
