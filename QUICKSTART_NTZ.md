@@ -7,7 +7,7 @@ This document provides a step-by-step-guide to program and evaluate the
 ## 2. Required Software  
 * Download the pre-built firmware image from: TBD
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
-* A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/). 
+* A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/).
 
 ## 3. Setup Hardware  
 * Connect an Ethernet cable to the board and to a local network.
@@ -15,10 +15,10 @@ This document provides a step-by-step-guide to program and evaluate the
 ![H5 STLINK PORT](media/H5_STLINK_PORT.png)  
 
 ## 4. Configure the Serial Terminal  
-* Open TeraTerm and configure the settings as shown in the screenshot below:  
-![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")  
-* Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.   
-* Enter the following command to ensure the serial port is functioning:  
+* Open TeraTerm and configure the settings as shown in the screenshot below:
+![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")
+* Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.
+* Enter the following command to ensure the serial port is functioning:
 ```
 help
 ```
@@ -40,13 +40,13 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ### 6.1 Flash Firmware  
 
 * Extract the firmware downloaded earlier and take note of the location
-* Launch the STM32CubeProgrammer  
-* In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:  
+* Launch the STM32CubeProgrammer
+* In STM32CubeProgrammer ensure "ST-LINK" is selected as the connection method in the top right:
 [pic]  
-* Click **Connect** next to this drop-down  
-* Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"  
-* Click **Browse** and select the firmware file extracted previously  
-* Click **Start Programming**  
+* Click **Connect** next to this drop-down
+* Click the 2nd icon down on the left side to open the "Erasing & Programming Screen"
+* Click **Browse** and select the firmware file extracted previously
+* Click **Start Programming**
 [pic]  
 
 * Once the flashing is reported as complete, click the  "Disconnect" button in the top-right corner.  
