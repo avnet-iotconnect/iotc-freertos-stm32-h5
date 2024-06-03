@@ -1,30 +1,27 @@
 # QuickStart STM32H5 on IoTConnect
 
-## 1. Introduction
-
+## 1. Introduction  
 This document provides a step-by-step-guide to program and evaluate the 
 [STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
 
-
-## 2. Required Software
-
+## 2. Required Software  
 * Download the pre-built firmware image from: TBD
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
 * A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/). 
- 
 
-## 3. Configure the Serial Terminal
+## 3. Setup Hardware  
+* Connect an Ethernet cable to the board and to a local network.
+* Connect a USB cable from your PC to the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
+[Image here]
 
-Open the target board's serial port with your serial console application.
-
-Determine the serial port that the board is connected to and ensure the following settings
-are configured as seen in the screenshot below:
-
-![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")
-
-You will now have access to the command line interface to the device,
-enter the command "help" to check that the serial port is functioning.
-
+## 3. Configure the Serial Terminal  
+* Open TeraTerm and configure the settings as shown in the screenshot below:  
+![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")  
+* Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.   
+* Enter the following command to ensure the serial port is functioning:  
+```
+help
+```
 
 ## 4. Setup an IoTConnect Cloud Account
 This guide requires an IoTConnect account on AWS.
@@ -39,12 +36,10 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
-## 5. Device Setup
+## 5. Device Setup  
+### 5.1 Flash Firmware  
 
-### 5.1 Flash firmware image onto dev kit board.
-
-* Connect an Ethernet cable to the board and to your network.
-* Open the STM32CubeProgrammer and connect board to a PC with a USB cable. Ensure you use the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
+* Launch the STM32CubeProgrammer
 
 In STM32CubeProgrammer click the Open File tab or "+" tab at the top of the
 window.
