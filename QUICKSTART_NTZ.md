@@ -14,14 +14,14 @@ on IoTConnect.
 * A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/). 
  
 
-### Configure Your Board
+## Configure Your Board
 
 Open the target board's serial port with your serial console application.
 
-Determine the serial port that the STM32 board is connected to and ensure the following settings
+Determine the serial port that the board is connected to and ensure the following settings
 are configured as seen in the screenshot below:
 
-![Tera Term Serial Settings](media/teraterm-settings.png "Tera Term Serial Settings")
+![Tera Term Serial Settings](media/teraterm_settings.png "Tera Term Serial Settings")
 
 You will now have access to the command line interface to the device,
 enter the command "help" to check that the serial port is functioning.
@@ -50,186 +50,69 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 In STM32CubeProgrammer click the Open File tab or "+" tab at the top of the
 window.
 
-Towards the top-right of the STM32CubeProgrammer window is a blue "Download" button,
-click on this to download the image to the developer kit board.  The red LED
-next to the USB socket will flash during the download.
+Towards the top-right of the STM32CubeProgrammer window is a blue "Download" button, click on this to download the image to the developer kit board. The red LED next to the USB socket will flash during the download.
 
-Once the download is reported as complete, click the green "Disconnect" button int
-the top-right corner of STM32CubeProgrammer.
+Once the download is reported as complete, click the green "Disconnect" button in the top-right corner of STM32CubeProgrammer.
 
 Press the black reset button next to the blue button to reset the board.
 
 
-#### Thing Name
+#### Configure Device Name
 
-First, configure the desired thing name / mqtt device identifier:
-
-```
-> conf set thing_name device_name
-thing_name="device_name"
-```
-
-#### IoT-Connect CPID and Env
-
-Next, set the IoT-Connect "cpid" and "env" variables.  These can be found on the IoT-Connect web
-dashboard under Settings - Key Vault.
+Copy the following command, paste it in the terminal, replace "[device name]" with a name of your choice and hit `Enter`.
 
 ```
-> conf set cpid cpid_string
-cpid = "********************"
-
->conf set env env_string
-env = "env_string"
+conf set thing_name [device name]
 ```
 
-
-NOTE: There are additional settings for "mqtt_endpoint" and "telemetry_cd".  These should not need
-setting as these are obtained by the discovery and sync steps when the device connects to the Internet.
-If there are issues, set these to dummy values or obtain from the IoT-Connect dashboard.
+#### Configure IoTConnect CPID and Env
 
 
-#### WiFi SSID and Passphrase
 
-Next, configure you WiFi network details:
-
+Replace "cpid_string" with the actual CPID in the following command and enter into the terminal.  
 ```
-> conf set wifi_ssid ssidGoesHere
-wifi_ssid="ssidGoesHere"
-
-> conf set wifi_credential MyWifiPassword
-wifi_credential="MyWifiPassword"
+conf set cpid cpid_string
 ```
 
+Replace "env_string" with the actual CPID in the following command and enter into the terminal. 
+```
+conf set env env_string
+```
 
-#### Commit Configuration Changes
+### Commit Configuration Changes
 Commit the staged configuration changes to non-volatile memory.
 
 ```
-> conf commit
-Configuration saved to NVM.
+conf commit
 ```
 
 
-#### Import the Amazon Root CA Certificate
+### Import the AWS Root CA Certificate
 
-Use the *pki import cert root_ca_cert* command to import the Amazon Root CA Certificate.
-
-For this demo, we recommend you use the ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) Root CA Certificate which has signed all four available Amazon Trust Services Root CA certificates.
-
-Copy/Paste the contents of [SFSRootCAG2.pem](https://www.amazontrust.com/repository/SFSRootCAG2.pem)
-into your serial terminal after issuing the ```pki import cert``` command.
-
+Issue the following command to import the AWS Root CA:  
 ```
-> pki import cert root_ca_cert
+pki import cert root_ca_cert
 ```
 
-After pressing enter at the end of the above line, paste the certificate into the terminal.
+Next, Copy/Paste the contents of ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) with the "BEGIN" and "END" lines into the terminal and press `Enter`.
+Note:  This Root CA Certificate which has signed all four available Amazon Trust Services Root CA certificates.
 
+### Generate a Private Key
+
+Use the following command to generate a local Private Key:  
 ```
------BEGIN CERTIFICATE-----
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
------END CERTIFICATE-----
+pki generate key
 ```
 
-#### Import the GoDaddy Root CA Certificate for HTTPS Discovery and Sync
-
-Use the *pki import cert godaddy_ca_cert* command to import the GoDaddy CA Certificate.
-This is required for the IoT-Connect Discovery step during initialization. This feature
-can be enabled or disabled in the source code.
-
-For this demo, use ["GoDaddy CA Certificate](certs/godaddy_ca_cert.pem).
-
-Copy/Paste the contents of [godaddy_ca_cert.pem](certs/godaddy_ca_cert.pem)
-into your serial terminal after issuing the ```pki import cert``` command.
-
+### Generate a Self-Signed Certificate
+Use the following command to generate a Self-Signed Certificate:  
 ```
-> pki import cert godaddy_ca_cert
+pki generate cert
 ```
 
-After pressing enter at the end of the above line, paste the following GoDaddy CA
-certificate into the terminal.
+* Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.
 
-```
------BEGIN CERTIFICATE-----
-MIIDxTCCAq2gAwIBAgIBADANBgkqhkiG9w0BAQsFADCBgzELMAkGA1UEBhMCVVMx
-EDAOBgNVBAgTB0FyaXpvbmExEzARBgNVBAcTClNjb3R0c2RhbGUxGjAYBgNVBAoT
-EUdvRGFkZHkuY29tLCBJbmMuMTEwLwYDVQQDEyhHbyBEYWRkeSBSb290IENlcnRp
-ZmljYXRlIEF1dGhvcml0eSAtIEcyMB4XDTA5MDkwMTAwMDAwMFoXDTM3MTIzMTIz
-NTk1OVowgYMxCzAJBgNVBAYTAlVTMRAwDgYDVQQIEwdBcml6b25hMRMwEQYDVQQH
-EwpTY290dHNkYWxlMRowGAYDVQQKExFHb0RhZGR5LmNvbSwgSW5jLjExMC8GA1UE
-AxMoR28gRGFkZHkgUm9vdCBDZXJ0aWZpY2F0ZSBBdXRob3JpdHkgLSBHMjCCASIw
-DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL9xYgjx+lk09xvJGKP3gElY6SKD
-E6bFIEMBO4Tx5oVJnyfq9oQbTqC023CYxzIBsQU+B07u9PpPL1kwIuerGVZr4oAH
-/PMWdYA5UXvl+TW2dE6pjYIT5LY/qQOD+qK+ihVqf94Lw7YZFAXK6sOoBJQ7Rnwy
-DfMAZiLIjWltNowRGLfTshxgtDj6AozO091GB94KPutdfMh8+7ArU6SSYmlRJQVh
-GkSBjCypQ5Yj36w6gZoOKcUcqeldHraenjAKOc7xiID7S13MMuyFYkMlNAJWJwGR
-tDtwKj9useiciAF9n9T521NtYJ2/LOdYq7hfRvzOxBsDPAnrSTFcaUaz4EcCAwEA
-AaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYwHQYDVR0OBBYE
-FDqahQcQZyi27/a9BUFuIMGU2g/eMA0GCSqGSIb3DQEBCwUAA4IBAQCZ21151fmX
-WWcDYfF+OwYxdS2hII5PZYe096acvNjpL9DbWu7PdIxztDhC2gV7+AJ1uP2lsdeu
-9tfeE8tTEH6KRtGX+rcuKxGrkLAngPnon1rpN5+r5N9ss4UXnT3ZJE95kTXWXwTr
-gIOrmgIttRD02JDHBHNA7XIloKmf7J6raBKZV8aPEjoJpL1E/QYVN8Gb5DKj7Tjo
-2GTzLH4U/ALqn83/B2gX2yKQOC16jdFU8WnjXzPKej17CuPKf1855eJ1usV2GDPO
-LPAvTK33sefOT6jEm0pUBsV/fdUID+Ic/n4XuKxe9tQWskMJDE32p2u0mYRlynqI
-4uJEvlz36hz1
------END CERTIFICATE-----
-```
-
-
-#### Generate a private key
-Use the *pki generate key* command to generate a new ECDSA device key pair. The resulting
-public key will be printed to the console.
-
-```
-> pki generate key
-
-SUCCESS: Key pair generated and stored in
-Private Key Label: tls_key_priv
-Public Key Label: tls_key_pub
------BEGIN PUBLIC KEY-----
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=
------END PUBLIC KEY-----
-```
-
-
-#### Generate a self-signed certificate
-Next, use the *pki generate cert* command to generate a new self-signed certificate.
-We will upload this to IoT-Connect as a CA Certificate (Individual) in the next step:
-
-```
-> pki generate cert
-
------BEGIN CERTIFICATE-----
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX==
------END CERTIFICATE-----
-```
-
-Save the resulting certificate to a new file, including the  BEGIN CERTIFICATE and END CERTIFICATE lines.
-Name the file as devicecert.pem.
-
-
-
-### Register the device with IoTConnect-AWS
+### Register the device with IoTConnect
 
 1. Upload the certificate that you saved from the terminal, devicecert.pem at https://awspoc.iotconnect.io/certificate (CA Certificate Individual)
 2. Create a template using **CA certificate Individual** as "Auth Type".
