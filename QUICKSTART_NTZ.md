@@ -1,19 +1,19 @@
 # QuickStart STM32H5 on IoTConnect
 
-## Introduction
+## 1. Introduction
 
 This document provides a step-by-step-guide to program and evaluate the 
 [STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
 
 
-## Required Software
+## 2. Required Software
 
 * Download the pre-built firmware image from: TBD
 * Download and install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html) for STM32.
 * A serial console application such as [Tera Term](https://sourceforge.net/projects/tera-term/). 
  
 
-## Configure Your Board
+## 3. Configure the Serial Terminal
 
 Open the target board's serial port with your serial console application.
 
@@ -26,7 +26,7 @@ You will now have access to the command line interface to the device,
 enter the command "help" to check that the serial port is functioning.
 
 
-## Cloud Account Setup
+## 4. Setup an IoTConnect Cloud Account
 This guide requires an IoTConnect account on AWS.
 
 >**NOTE:**  
@@ -39,9 +39,9 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ![IoTConnect on AWS](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/subscription/media/iotc-aws.png)
 
-## Device Setup
+## 5. Device Setup
 
-### Flash firmware image onto dev kit board.
+### 5.1 Flash firmware image onto dev kit board.
 
 * Connect an Ethernet cable to the board and to your network.
 * Open the STM32CubeProgrammer and connect board to a PC with a USB cable. Ensure you use the USB port labled "USB_STLINK" which is on the opposite side of the board as the Ethernet port.
@@ -56,7 +56,7 @@ Once the download is reported as complete, click the green "Disconnect" button i
 Press the black reset button next to the blue button to reset the board.
 
 
-#### Configure Device Name
+### 5.2 Configure Device Name
 
 Copy the following command, paste it in the terminal, replace "[device name]" with a name of your choice and hit `Enter`.
 
@@ -64,7 +64,7 @@ Copy the following command, paste it in the terminal, replace "[device name]" wi
 conf set thing_name [device name]
 ```
 
-#### Configure IoTConnect CPID and Env
+#### 5.3 Configure IoTConnect CPID and Env
 
 
 
@@ -78,15 +78,14 @@ Replace "env_string" with the actual CPID in the following command and enter int
 conf set env env_string
 ```
 
-### Commit Configuration Changes
+### 5.4 Commit Configuration Changes
 Commit the staged configuration changes to non-volatile memory.
 
 ```
 conf commit
 ```
 
-
-### Import the AWS Root CA Certificate
+### 5.5 Import the AWS Root CA Certificate
 
 Issue the following command to import the AWS Root CA:  
 ```
@@ -96,14 +95,14 @@ pki import cert root_ca_cert
 Next, Copy/Paste the contents of ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) with the "BEGIN" and "END" lines into the terminal and press `Enter`.
 Note:  This Root CA Certificate which has signed all four available Amazon Trust Services Root CA certificates.
 
-### Generate a Private Key
+### 5.6 Generate a Private Key
 
 Use the following command to generate a local Private Key:  
 ```
 pki generate key
 ```
 
-### Generate a Self-Signed Certificate
+### 5.7 Generate a Self-Signed Certificate
 Use the following command to generate a Self-Signed Certificate:  
 ```
 pki generate cert
@@ -111,7 +110,7 @@ pki generate cert
 
 * Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.
 
-### Register the device with IoTConnect
+## 6. Configure IoTConnect
 
 1. Upload the certificate that you saved from the terminal, devicecert.pem at https://awspoc.iotconnect.io/certificate (CA Certificate Individual)
 2. Create a template using **CA certificate Individual** as "Auth Type".
@@ -120,37 +119,11 @@ pki generate cert
 
 In the template add attributes for the following, setting their types as integers:
 
-| Name              | Type      |
-|-------------------|-----------|
-| accelerometer_x   | Integer   |
-| accelerometer_y   | Integer   |
-| accelerometer_z   | Integer   |
-| gyro_x            | Integer   |
-| gyro_y            | Integer   |
-| gyro_z            | Integer   |
+## 7. Reset the target device
 
+* Reset the device and it shall automatically connect to the AWS MQTT broker based on the configuration set previously. 
 
-In the template add the following commands that the device supports:
-
-| Command           | Command-Name | Parameter Required | Receipt Required | OTA   |
---------------------|--------------|--------------------|------------------|-------|
-| led-green         | led-green    | No                 | No               | No    |
-| led-red           | led-red      | No                 | No               | No    |
-
-
-
-### Reset the target device
-
-Reset the device and it shall automatically connect to the WiFi router and AWS MQTT broker based
-on the configuration set earlier. 
-
-```
-> reset
-Resetting device.
-```
-
-This will take several seconds to connect, There is usually a wait after the filesystem is mounted.
-When connected the following lines should appear on the CLI.
+* After several seconds the following lines should appear in the terminal:  
 
 ```
 <INF>     9574 [MQTTAgent ] Network connection 0x20025538: TLS handshake successful. (mbedtls_transport.c:1367)
@@ -160,26 +133,8 @@ When connected the following lines should appear on the CLI.
 <INF>    10839 [sntp      ] Time received from NTP. Time now: 2023-10-09T11:56:59.000Z! (time.c:100)
 ```
 
-## Verification
+## 8. Verification
 
-At this point the board should be sending telemetry to the IoTConnect portal. We can verify by checking the "Live Data" feed.
-* Return to the *Devices* page and click on the newly created Device ID.
-* On the left sub-menu, click "Live Data" and after a few seconds, MQTT data should be shown. 
-
-
-## Sending Commands
-
-This demo supports commands to turn the red and green LEDs on the development kit board on and off.
-
-Send a command "led-green en"  to enable the green LED, set "led-green" to turn green LED off. The same
-applies to "led-red en" for the red LED.
-
-
-## Erasing settings (factory reset)
-
-The settings can be erased with the following command:
-
-```
-> erase
-Erasing QSPI NVM, will reset afterwards.
-```
+At this point the board should be sending telemetry to the IoTConnect platform.
+* To verify, return to the *Devices* page and click on the newly created Device ID.
+* On the left sub-menu, click *Live Data* and after a few seconds, MQTT data should be shown. 
