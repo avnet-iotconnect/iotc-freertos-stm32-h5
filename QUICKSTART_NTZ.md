@@ -144,3 +144,12 @@ After about a minute the board will be sending telemetry to the IoTConnect platf
 * On the left sub-menu, click *Live Data* and after a few seconds, MQTT data should be shown. 
 
 ## 10. Visualization
+Dashboards are used to easily visualize data.  
+* Download the [STM32H5 Dashboard Template]() (Right-click and open in new window)  
+* Click the **Download** icon to save the file and take note of the location  
+* Once downloaded, select "Create Dashboard" from the top of the IoTConnect portal and then choose the "Import Dashboard" option.
+* Enter a name for the dashboard (e.g. "STM32H5 Demo Dashboard")  
+* Click "Browse" and select the dashboard template (.json) file downloaded previously which will cause two new fields to appear.  
+* Select "STM32H5ntz" from the **Template** drop-down  
+* Select the unique device name from the **Device** drop-down
+* Click **Save** 
