@@ -29,10 +29,11 @@
                         "key": "url"
                     },
                     "device": {
-                        "deviceGuid": "",
+                        "deviceGuid": "35D84B57-1FAA-4E26-8355-9DD85DFF173C",
                         "deviceName": "",
                         "imageurl": "",
-                        "key": "device"
+                        "key": "device",
+                        "deviceUniqueId": "StevensH5demo"
                     },
                     "telemetry": {
                         "deviceGuid": "",
@@ -68,8 +69,8 @@
                         "showHeader": "false",
                         "showDate": "false",
                         "device": {
-                            "deviceGuid": "52FE3BF8-63F4-45C9-A6B4-AC152DA259DC",
-                            "deviceUniqueId": "StevensH7demo"
+                            "deviceGuid": "35D84B57-1FAA-4E26-8355-9DD85DFF173C",
+                            "deviceUniqueId": "StevensH5demo"
                         },
                         "attributes": {
                             "attribute": [
@@ -216,6 +217,61 @@
                 "h": "2",
                 "i": "HyperLink",
                 "minW": "5",
+                "minH": "2",
+                "maxH": "2",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "E413CDFD-54EB-465E-BA97-CE610867E440",
+            "widgetProperties": {
+                "i": "DeviceCommand",
+                "background": "#fff",
+                "fontColor": "#000",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Device Command",
+                "titleAlign": "",
+                "contents": {
+                    "deviceCommand": {
+                        "template": "D8D9F3F6-5DD6-473B-8D8F-107B51F4599E",
+                        "device": "StevensH5demo",
+                        "deviceGuid": "35D84B57-1FAA-4E26-8355-9DD85DFF173C"
+                    }
+                }
+            },
+            "properties": {
+                "x": "0",
+                "y": "12",
+                "w": "22",
+                "h": "10",
+                "i": "DeviceCommand",
+                "minW": "22",
+                "minH": "10",
+                "maxH": "20",
+                "maxW": "35",
+                "isStatic": "false"
+            }
+        },
+        {
+            "widgetGuid": "F66A9747-6C71-40E5-8639-9F53233494D2",
+            "widgetProperties": {
+                "i": "Label",
+                "background": "#fcfc9f",
+                "fontColor": "#343434",
+                "fontFamily": "Proxima Nova",
+                "fontSize": "18",
+                "title": "Use \"on\" or \"off\" parameters",
+                "titleAlign": "",
+                "contents": ""
+            },
+            "properties": {
+                "x": "23",
+                "y": "12",
+                "w": "9",
+                "h": "2",
+                "i": "Label",
+                "minW": "6",
                 "minH": "2",
                 "maxH": "2",
                 "isStatic": "false"
