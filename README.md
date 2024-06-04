@@ -10,4 +10,3 @@ The QuickStart Guide below provides a binary image to program the board for quic
 
 Use this Developer Guide to setup the project and modify the source to further develop using the sample application.
 * [Developer Guide](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotc-freertos-stm32-h5/DEVELOPER_GUIDE.md)
-
