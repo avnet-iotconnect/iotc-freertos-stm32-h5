@@ -16,6 +16,29 @@
             "type": "DECIMAL"
         }
     ],
+    "commands": [
+        {
+            "name": "led-red",
+            "command": "led-red",
+            "requiredParam": true,
+            "requiredAck": false,
+            "isOTACommand": false
+        },
+        {
+            "name": "led-green",
+            "command": "led-green",
+            "requiredParam": true,
+            "requiredAck": false,
+            "isOTACommand": false
+        },
+        {
+            "name": "led-freq",
+            "command": "led-freq",
+            "requiredParam": true,
+            "requiredAck": true,
+            "isOTACommand": false
+        }
+    ],
     "messageVersion": "2.1",
     "msgCode": "XG4E3UL",
     "greenGrass": "0",
