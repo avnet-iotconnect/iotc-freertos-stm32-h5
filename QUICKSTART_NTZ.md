@@ -145,7 +145,7 @@ After about a minute the board will be sending telemetry to the IoTConnect platf
 
 ## 10. Visualization
 Dashboards are used to easily visualize data.  
-* Download the [STM32H5 Dashboard Template]() (Right-click and open in new window)  
+* Download the [STM32H5 Dashboard Template](templates/STM32H5ntz_device_template.JSON) (Right-click and open in new window)  
 * Click the **Download** icon to save the file and take note of the location  
 * Once downloaded, select "Create Dashboard" from the top of the IoTConnect portal and then choose the "Import Dashboard" option.
 * Enter a name for the dashboard (e.g. "STM32H5 Demo Dashboard")  
