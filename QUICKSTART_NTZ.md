@@ -142,3 +142,5 @@ A Device Template with Self Signed authentication type will need to be imported.
 After about a minute the board will be sending telemetry to the IoTConnect platform.  
 * To verify, return to the *Devices* page and click on the newly created Device ID.
 * On the left sub-menu, click *Live Data* and after a few seconds, MQTT data should be shown. 
+
+## 10. Visualization
