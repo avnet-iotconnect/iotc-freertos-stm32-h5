@@ -57,6 +57,8 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 ### 7.2 Configure Device
 Once the board has reset, switch back to the serial terminal to configure the device.  
 Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
+> **Note:** The device name may only contain letters, numbers and hyphens ("-").  
+
 **Save** this device name as it will be used later.
 ```
 conf set thing_name device_name
