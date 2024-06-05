@@ -55,36 +55,40 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ### 7.2 Configure Device
 Once the board has reset, switch back to the serial terminal to configure the device.  
-Enter `help` into the serial terminal and ensure there is a response.  
-Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
+* Enter `help` into the serial terminal and ensure there is a response.  
+
+1. Copy/Paste the code snippet below into the terminal and append a **device_name** your choice and press `Enter`.  
 > **Note:** The device name may only contain letters, numbers and hyphens ("-").  
 
-**Save** this device name as it will be used later.
+Example of command: `conf set thing_name <device_name>`  
 ```
-conf set thing_name device_name
-```
+conf set thing_name
+```  
+(Take note of your **device_name** as it will be used later.)  
 
-Replace "cpid_string" with the actual CPID variable in the following command and enter into the terminal.  
+2. Copy/Paste the code snippet below into the terminal and append the **CPID** variable saved from earlier and press `Enter`.  
+Example of command: `conf set cpid MyCPID`
 ```
-conf set cpid cpid_string
-```
+conf set cpid
+```  
 
-Replace "env_string" with the actual ENV variable in the following command and enter into the terminal.  
+3. Copy/Paste the code snippet below into the terminal and append the **ENV** variable saved from earlier and press `Enter`.  
+Example of command: `conf set env MyEnvironment`
 ```
-conf set env env_string
-```
+conf set env
+```  
 
-Commit the staged configuration changes to non-volatile memory.  
+4. Copy/Paste the code snippet below into the terminal and press `Enter` to commit the configuration to memory.
 ```
 conf commit
-```
+```  
 
-Issue the following command to import the AWS Root CA:  
+5. Copy/Paste the code snippet below and press `Enter` to import the AWS Root CA:  
 ```
 pki import cert root_ca_cert
-```
+```  
 
-Paste the contents of this signed AWS Root CA Certificate ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) into the terminal and hit `Enter`.  
+6. Copy/Paste the contents of this signed AWS Root CA Certificate ["Starfield Services Root Certificate Authority - G2](https://www.amazontrust.com/repository/SFSRootCAG2.pem) into the terminal and hit `Enter`.  
 ```
 -----BEGIN CERTIFICATE-----
 MIID7zCCAtegAwIBAgIBADANBgkqhkiG9w0BAQsFADCBmDELMAkGA1UEBhMCVVMx
@@ -110,19 +114,19 @@ iEDPfUYd/x7H4c7/I9vG+o1VTqkC50cRRj70/b17KSa7qWFiNyi2LSr2EIZkyXCn
 0q23KXB56jzaYyWf/Wi3MOxw+3WKt21gZ7IeyLnp2KhvAotnDU0mV3HaIPzBSlCN
 sSi6
 -----END CERTIFICATE-----
-```
+```  
 
-Use the following command to generate a local Private Key:  
+7. Copy/Paste the code snippet below and press `Enter` to generate a local Private Key:  
 ```
 pki generate key
-```
+```  
 
-Use the following command to generate a Self-Signed Certificate:  
+8. Copy/Paste the code snippet below and press `Enter` to generate a Self-Signed Certificate:  
 ```
 pki generate cert
-```
+```  
 
-Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
+9. Save the resulting certificate to a file, including the "BEGIN" and "END" lines, named *devicecert.pem*.  
 
 ## 8. Configure IoTConnect  
 Return to the IoTConnect web portal and complete the following steps:
@@ -134,7 +138,7 @@ A Device Template with Self Signed authentication type will need to be imported.
 
 ### 8.2 Create IoTConnect Device
 * Create a new device in the IoTConnect portal. (Follow the [Create a New Device](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/create_new_device.md) guide for a detailed walkthrough.)
-* Enter the **device name** you selected earlier in the "Unique ID" field and enter a human-readable description in the "Display Name" field.
+* Enter the **device_name** you selected earlier in the "Unique ID" field and enter description of your choice in the "Display Name" field.
 * Select the Entity drop-down and pick the entity displayed.
 * Select the template from the dropdown box that was just imported.
 * Under "Device certificate" click "Use my certificate"
