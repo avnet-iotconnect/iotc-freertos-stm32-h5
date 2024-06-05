@@ -134,7 +134,7 @@ A Device Template with Self Signed authentication type will need to be imported.
 
 ### 8.2 Create IoTConnect Device
 * Create a new device in the IoTConnect portal. (Follow the [Create a New Device](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/create_new_device.md) guide for a detailed walkthrough.)
-* Enter the "device name" you selected earlier in the *Unique ID* field and enter a descriptive *Display Name* of your choice.
+* Enter the **device name** you selected earlier in the "Unique ID" field and enter a human-readable description in the "Display Name" field.
 * Select the Entity drop-down and pick the entity displayed.
 * Select the template from the dropdown box that was just imported.
 * Under "Device certificate" click "Use my certificate"
