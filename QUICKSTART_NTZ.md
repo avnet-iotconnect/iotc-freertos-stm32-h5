@@ -19,7 +19,6 @@ For simplicity, thie guide does not leverage the ST TrustZone secure element, bu
 * Open TeraTerm and configure the settings as shown in the screenshot below:
 ![Tera Term Serial Settings](media/teraterm_settings.png)
 * Open a new serial connect and select the COM port which contains "STMicroelectronics" in the name.
-* Enter `help` into the serial terminal and ensure there is a response.
 
 ## 5. Setup an IoTConnect Cloud Account
 This guide requires an IoTConnect account on AWS.
@@ -56,6 +55,7 @@ guide and ensure to select the [AWS version](https://subscription.iotconnect.io/
 
 ### 7.2 Configure Device
 Once the board has reset, switch back to the serial terminal to configure the device.  
+Enter `help` into the serial terminal and ensure there is a response.  
 Replace "device_name" with a device name of your choice in the following command and enter into the terminal.  
 > **Note:** The device name may only contain letters, numbers and hyphens ("-").  
 
@@ -130,7 +130,7 @@ Return to the IoTConnect web portal and complete the following steps:
 ### 8.1 Create IoTConnect Device Template  
 A Device Template with Self Signed authentication type will need to be imported.
 * Download the premade [Device Template with Self-Signed Auth](templates/STM32H5ntz_device_template.JSON).
-* Import the template into your IoTConnect instance. (A guide on [Importing a Device Template](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/import_device_template.md) is available or for more information on [Template Management](https://docs.iotconnect.io/iotconnect/user-manuals/devices/template-management/), please see the [IoTConnect Documentation](https://iotconnect.io) website.)
+* Import the template into your IoTConnect instance. (A guide on [Importing a Device Template](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/import_device_template.md) is available.)
 
 ### 8.2 Create IoTConnect Device
 * Create a new device in the IoTConnect portal. (Follow the [Create a New Device](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotconnect/create_new_device.md) guide for a detailed walkthrough.)
@@ -148,7 +148,7 @@ After about a minute the board will be sending telemetry to the IoTConnect platf
 
 ## 10. Visualization
 Dashboards are used to easily visualize data.  
-* Download the [STM32H5 Dashboard Template](templates/STM32H5ntz_device_template.JSON) (Right-click and open in new window)  
+* Download the [STM32H5 Dashboard Template](templates/STM32H5_Demo_Dashboard.json) (Right-click and open in new window)  
 * Click the **Download** icon to save the file and take note of the location  
 * Once downloaded, select "Create Dashboard" from the top of the IoTConnect portal and then choose the "Import Dashboard" option.
 * Enter a name for the dashboard (e.g. "STM32H5 Demo Dashboard")  
