@@ -115,7 +115,7 @@ iEDPfUYd/x7H4c7/I9vG+o1VTqkC50cRRj70/b17KSa7qWFiNyi2LSr2EIZkyXCn
 sSi6
 -----END CERTIFICATE-----
 ```  
-Otherwise, for use with Azure copy/paste the contents of this signed Root CA Certificate from [DigiCert Assured ID Root G2](https://cacerts.digicert.com/DigiCertAssuredIDRootG2.crt.pem) into the terminal and hit `Enter`. 
+Otherwise, for use with Azure copy/paste the contents of this signed Root CA Certificate from [DigiCert GLobal Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) into the terminal and hit `Enter`. 
 ```
 -----BEGIN CERTIFICATE-----
 MIIDjjCCAnagAwIBAgIQAzrx5qcRqaC7KGSxHQn65TANBgkqhkiG9w0BAQsFADBh
