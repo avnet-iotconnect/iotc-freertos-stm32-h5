@@ -3,7 +3,7 @@
 ## 1. Introduction  
 This document provides a step-by-step-guide to program and evaluate the 
 [STM32H573IIK3Q Discovery kit](https://www.st.com/en/evaluation-tools/stm32h573i-dk.html) on IoTConnect.
-For simplicity, thie guide does not leverage the Cortex-M33 TrustZone and ST’s Secure Manager, but please refer to the [Developer Guide](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotc-freertos-stm32-h5/DEVELOPER_GUIDE.md) for more information on how to setup this feature.
+For simplicity, this guide does not leverage the Cortex-M33 TrustZone and ST’s Secure Manager, but please refer to the [Developer Guide](https://github.com/avnet-iotconnect/avnet-iotconnect.github.io/blob/main/documentation/iotc-freertos-stm32-h5/DEVELOPER_GUIDE.md) for more information on how to setup this feature.
 
 ## 2. Required Software  
 * Download the pre-built firmware image: [STM32H573I-DK_aws_eth.hex](https://iotconnect-sdk-images.s3.amazonaws.com/MCU/st/h5dk/STM32H573I-DK_aws_eth.hex)
